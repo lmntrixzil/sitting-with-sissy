@@ -1,0 +1,7 @@
+# Private Vercel files (sign-in token and project link)
+.vercel
+.env*
+
+# Mac and editor clutter
+.DS_Store
+__pycache__/

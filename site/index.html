@@ -1,0 +1,1925 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sitting with Sissy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,500..700,100;1,9..144,500..700,100&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: split hero. Copy column left (~42%), house scene right (~58%) as the star; stacks scene-first on phones. */
+:root {
+  --bg: #D3E5F3;          /* powder-blue sky */
+  --bg-deep: #BCD5EA;
+  --fg: #1F3349;          /* deep slate-navy ink */
+  --muted: #4A5F76;
+  --ivory: #FCF8EF;
+  --trim: #FFFCF5;
+  --trim-shade: #E9DFCC;
+  --wall: #F7F0E2;
+  --wall-shade: #EADFCB;
+  --roof: #7FA3C4;
+  --roof-shade: #6B8FB1;
+  --door: #95B6D3;
+  --door-shade: #7D9FBE;
+  --ground: #C3D8E9;
+  --step: #E6DCC8;
+  --butter: #F7DA7B;
+  --butter-deep: #E2B53C;
+  --butter-ink: #3A2E0E;
+  --card: #FAFCFF;
+  --shadow: 32 51 73;
+  --glow: .55;
+  --cloud: #FFFFFF;
+  --surface: #E8F2FA;     /* light blue sections */
+  --butter-soft: #FFF3C4; /* pale butter sections */
+  --line: rgb(31 51 73 / .12);
+  --line-strong: rgb(31 51 73 / .28);
+  --bubble: #FFFFFF;
+  --bubble-ink: #1F3349;
+  --ok: #3F8A5C;
+  --danger: #B4472E;
+
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "Nunito", ui-rounded, "SF Pro Rounded", system-ui, sans-serif;
+  --font-hand: "Caveat", "Bradley Hand", cursive;
+}
+
+* { box-sizing: border-box; }
+:root { color-scheme: light; }
+img { max-width: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  background-image: radial-gradient(120% 80% at 75% 10%, color-mix(in srgb, var(--bg) 60%, #fff 40%) 0%, transparent 60%);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 1340px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 56px); }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--butter-deep); outline-offset: 3px; border-radius: 10px; }
+
+/* ---------- Nav ---------- */
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 22px 8px; position: relative; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand svg { width: 44px; height: 44px; flex: none; }
+.brand-text { display: flex; flex-direction: column; line-height: 1; }
+.brand-text small { font-family: var(--font-body); font-weight: 800; font-size: .66rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; white-space: nowrap; }
+.brand-text b { font-family: var(--font-display); font-style: italic; font-weight: 650; font-size: 1.7rem; font-variation-settings: "SOFT" 100, "opsz" 72; letter-spacing: -.01em; }
+.links { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 34px); list-style: none; margin: 0; padding: 0; font-weight: 700; font-size: .98rem; }
+.links a { text-decoration: none; color: var(--muted); padding: 6px 2px; transition: color .2s; }
+.links a:hover { color: var(--fg); }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.menu-btn { display: none; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid color-mix(in srgb, var(--fg) 18%, transparent); background: var(--trim); color: #1F3349; cursor: pointer; place-items: center; }
+.menu-btn svg { width: 20px; height: 20px; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: var(--font-body); font-weight: 800; font-size: 1.02rem; text-decoration: none; border-radius: 999px; padding: 15px 26px; border: 0; cursor: pointer; transition: transform .2s cubic-bezier(.3,1.6,.5,1), box-shadow .2s; white-space: nowrap; }
+.btn:active { transform: translateY(1px) scale(.98); }
+.btn-primary { background: var(--butter); color: var(--butter-ink); box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 -3px 0 color-mix(in srgb, var(--butter-deep) 70%, transparent) inset, 0 10px 24px -10px rgb(var(--shadow) / .45); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 -3px 0 color-mix(in srgb, var(--butter-deep) 70%, transparent) inset, 0 16px 30px -12px rgb(var(--shadow) / .5); }
+.btn-small { padding: 11px 20px; font-size: .95rem; }
+.btn-ghost { background: var(--card); color: var(--fg); box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--fg) 14%, transparent) inset, 0 8px 20px -14px rgb(var(--shadow) / .5); }
+.btn-ghost:hover { transform: translateY(-2px); }
+.btn-ghost .num { font-weight: 600; font-size: .86rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.btn svg { width: 20px; height: 20px; flex: none; }
+
+/* ---------- Hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); align-items: center; gap: clamp(20px, 3.5vw, 56px); padding-block: clamp(12px, 3vw, 36px) clamp(40px, 6vw, 80px); }
+.copy { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 22px; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); background: color-mix(in srgb, var(--trim) 70%, transparent); padding: 7px 14px 7px 10px; border-radius: 999px; box-shadow: 0 0 0 1px color-mix(in srgb, var(--fg) 8%, transparent) inset; }
+.eyebrow i { width: 9px; height: 9px; border-radius: 50%; background: var(--butter-deep); box-shadow: 0 0 0 4px color-mix(in srgb, var(--butter) 45%, transparent); }
+h1 { margin: 0; font-family: var(--font-display); font-weight: 640; font-variation-settings: "SOFT" 100, "opsz" 110; font-size: clamp(2.6rem, 5vw, 4.6rem); line-height: 1.02; letter-spacing: -.025em; text-wrap: balance; }
+h1 .line { display: block; }
+h1 .hl { position: relative; white-space: nowrap; font-style: italic; }
+h1 .hl::after { content: ""; position: absolute; left: -.08em; right: -.06em; bottom: .04em; height: .3em; background: var(--butter); border-radius: .2em .5em .3em .6em; z-index: -1; transform: rotate(-1.2deg); }
+h1 .soft { color: var(--muted); }
+.lede { margin: 0; max-width: 34rem; font-size: clamp(1.05rem, 1.25vw, 1.18rem); color: var(--muted); text-wrap: pretty; }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+.trust { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 0; font-size: .92rem; font-weight: 700; color: var(--muted); }
+.trust .stars { color: var(--butter-deep); letter-spacing: .08em; font-size: 1.02rem; }
+.trust .dot { width: 4px; height: 4px; border-radius: 50%; background: currentColor; opacity: .45; }
+
+/* ---------- Scene ---------- */
+.stage { position: relative; min-width: 0; }
+.stage svg#scene { display: block; width: 100%; height: auto; max-width: 100%; touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; }
+.pet-hit { cursor: pointer; }
+.update { position: absolute; top: 2%; right: 1%; width: min(250px, 40%); background: var(--card); border-radius: 18px; padding: 12px 14px 13px; box-shadow: 0 18px 40px -18px rgb(var(--shadow) / .5), 0 0 0 1px color-mix(in srgb, var(--fg) 6%, transparent); font-size: .86rem; line-height: 1.4; transform: rotate(1.5deg); animation: floaty 6s ease-in-out infinite; }
+.update header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.update .av { width: 28px; height: 28px; border-radius: 50%; background: var(--butter); color: var(--butter-ink); display: grid; place-items: center; font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: .95rem; flex: none; }
+.update .who { font-weight: 800; font-size: .82rem; }
+.update .when { font-weight: 600; font-size: .74rem; color: var(--muted); font-variant-numeric: tabular-nums; margin-left: auto; }
+.update p { margin: 0; color: var(--fg); }
+.update .ticks { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+.update .ticks span { font-size: .7rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: color-mix(in srgb, var(--roof) 22%, transparent); color: var(--fg); }
+@keyframes floaty { 0%,100% { transform: rotate(1.5deg) translateY(0); } 50% { transform: rotate(1deg) translateY(-6px); } }
+.hint { position: absolute; left: 50%; bottom: -6px; transform: translateX(-50%); font-size: .78rem; font-weight: 700; color: var(--muted); opacity: .8; white-space: nowrap; }
+
+/* Scene parts that follow the theme */
+.s-wall { fill: var(--wall); }
+.s-wall-shade { fill: var(--wall-shade); }
+.s-roof { stroke: var(--roof); }
+.s-roof-shade { stroke: var(--roof-shade); }
+.s-trim { fill: var(--trim); }
+.s-trim-shade { fill: var(--trim-shade); }
+.s-door { fill: var(--door); }
+.s-door-shade { stroke: var(--door-shade); }
+.s-ground { fill: var(--ground); }
+.s-step { fill: var(--step); }
+.s-butter { fill: var(--butter); }
+.s-cloud { fill: var(--cloud); }
+.s-glow { opacity: var(--glow); animation: glow 5s ease-in-out infinite; }
+@keyframes glow { 0%,100% { opacity: var(--glow); } 50% { opacity: calc(var(--glow) * .82); } }
+.cloud { animation: drift 18s ease-in-out infinite alternate; }
+@keyframes drift { to { transform: translateX(36px); } }
+.leaves { transform-box: fill-box; transform-origin: 50% 100%; animation: sway 6s ease-in-out infinite; }
+@keyframes sway { 0%,100% { transform: rotate(-1.5deg); } 50% { transform: rotate(1.8deg); } }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 900px) {
+  .links { display: none; position: absolute; top: 74px; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--card); border-radius: 18px; padding: 8px; min-width: 200px; box-shadow: 0 20px 40px -16px rgb(var(--shadow) / .5); z-index: 10; }
+  .links.open { display: flex; }
+  .links a { display: block; padding: 10px 14px; border-radius: 10px; }
+  .menu-btn { display: grid; }
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .stage { order: -1; margin-inline: -8px; }
+  .copy { align-items: center; text-align: center; gap: 18px; }
+  .lede { max-width: 32rem; }
+  .ctas { justify-content: center; width: 100%; }
+  .trust { justify-content: center; }
+  .update { width: min(220px, 46%); font-size: .78rem; padding: 10px 11px; top: 0; }
+  .update .ticks { display: none; }
+}
+@media (max-width: 520px) {
+  .brand-text b { font-size: 1.45rem; }
+  .brand svg { width: 38px; height: 38px; }
+  .nav-right .btn-small { padding: 10px 14px; font-size: .88rem; }
+  .ctas .btn { flex: 1 1 100%; }
+  .update { display: none; }
+  .eyebrow { font-size: .68rem; letter-spacing: .08em; }
+  .hint { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .update, .cloud, .leaves, .s-glow { animation: none; }
+  .btn { transition: none; }
+}
+
+/* =================== Page sections =================== */
+[hidden] { display: none !important; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+.ic { width: 22px; height: 22px; flex: none; }
+.sec { position: relative; padding-block: clamp(64px, 9vw, 120px); scroll-margin-top: 8px; }
+.hero { scroll-margin-top: 0; }
+.sec.alt { --sec-bg: var(--surface); }
+.sec.sun { --sec-bg: var(--butter-soft); }
+.sec.alt, .sec.sun { background: var(--sec-bg); }
+/* scalloped top edge, echoing the window valance */
+.sec.alt::before, .sec.sun::before { content: ""; position: absolute; left: 0; right: 0; top: -14px; height: 15px; background: radial-gradient(circle at 14px 15px, var(--sec-bg) 13.5px, transparent 14px) repeat-x; background-size: 28px 15px; pointer-events: none; }
+.sec-head { display: grid; gap: 14px; max-width: 42rem; margin-bottom: clamp(32px, 5vw, 56px); }
+.sec-head.center { text-align: center; justify-items: center; margin-inline: auto; }
+.sec-head p { margin: 0; color: var(--muted); font-size: clamp(1.02rem, 1.2vw, 1.12rem); max-width: 36rem; text-wrap: pretty; }
+.kicker { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.kicker::before { content: ""; width: 20px; height: 3px; border-radius: 3px; background: var(--butter-deep); }
+h2 { overflow-wrap: break-word; margin: 0; font-family: var(--font-display); font-weight: 640; font-variation-settings: "SOFT" 100, "opsz" 96; font-size: clamp(2rem, 3.8vw, 3.3rem); line-height: 1.05; letter-spacing: -.02em; text-wrap: balance; }
+h3 { margin: 0; font-family: var(--font-display); font-weight: 650; font-variation-settings: "SOFT" 100, "opsz" 40; font-size: 1.32rem; line-height: 1.2; letter-spacing: -.01em; }
+.btn-soft { background: color-mix(in srgb, var(--roof) 20%, transparent); color: var(--fg); }
+.btn-soft:hover { background: color-mix(in srgb, var(--roof) 34%, transparent); transform: translateY(-2px); }
+.note-sm { margin: 0; font-size: .88rem; color: var(--muted); }
+
+/* reveal: content is readable before it animates */
+.js-anim .reveal { transition: transform .7s cubic-bezier(.2,.8,.2,1), opacity .7s ease; }
+.js-anim .reveal:not(.in) { transform: translateY(22px); opacity: .55; }
+
+/* ---------- Services ---------- */
+.svc-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.svc { background: var(--card); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 0 0 1px var(--line), 0 20px 40px -28px rgb(var(--shadow) / .5); transition: transform .6s cubic-bezier(.2,.8,.2,1) calc(var(--i, 0) * 90ms), box-shadow .3s, opacity .6s ease calc(var(--i, 0) * 90ms); }
+.svc.in:hover { transform: translateY(-5px); transition-delay: 0s; box-shadow: 0 0 0 1px var(--line), 0 26px 46px -26px rgb(var(--shadow) / .55); }
+.js-anim .svc:not(.in) { transform: translateY(36px); opacity: .6; }
+.svc.popular { box-shadow: 0 0 0 2.5px var(--butter-deep), 0 22px 44px -26px rgb(var(--shadow) / .55); }
+.svc-img { position: relative; aspect-ratio: 4 / 3; background: var(--bg-deep); }
+.svc-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.badge { position: absolute; top: 14px; left: 14px; display: inline-flex; align-items: center; gap: 6px; background: var(--butter); color: var(--butter-ink); font-weight: 800; font-size: .76rem; padding: 6px 12px; border-radius: 999px; box-shadow: 0 6px 16px -6px rgb(0 0 0 / .35); }
+.svc-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.svc-body p { margin: 0; color: var(--muted); font-size: .98rem; line-height: 1.55; }
+.incl { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: .84rem; color: var(--ok); }
+.incl .ic { width: 18px; height: 18px; }
+.svc-foot { margin-top: auto; padding-top: 14px; border-top: 1.5px dashed var(--line); display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.price { margin: 0; display: flex; align-items: baseline; gap: 5px; flex-wrap: wrap; }
+.price b { font-family: var(--font-display); font-variation-settings: "SOFT" 100; font-size: 1.85rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
+.price span, .price em { color: var(--muted); font-weight: 700; font-size: .88rem; font-style: normal; }
+.svc-more { margin: 26px 0 0; text-align: center; color: var(--muted); font-weight: 600; }
+.svc-more a { font-weight: 800; color: var(--fg); }
+
+/* ---------- Included ---------- */
+.split { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(32px, 6vw, 88px); align-items: center; }
+.photo { position: relative; margin: 0; }
+.photo > img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 30px; display: block; box-shadow: 0 30px 60px -36px rgb(var(--shadow) / .6); }
+.paper-note { position: absolute; right: -14px; bottom: 30px; width: min(250px, 72%); background: #FFFBEA; color: #33465C; font-family: var(--font-hand); font-size: 1.4rem; line-height: 1.15; padding: 24px 18px 16px; border-radius: 4px; transform: rotate(-3deg); box-shadow: 0 18px 30px -16px rgb(0 0 0 / .45); }
+.paper-note::before { content: ""; position: absolute; top: -10px; left: 50%; width: 74px; height: 22px; margin-left: -37px; background: var(--butter); opacity: .85; transform: rotate(4deg); border-radius: 3px; }
+.paper-note small { display: block; font-size: 1.05rem; color: #B7802A; margin-top: 6px; }
+.checklist { list-style: none; padding: 0; margin: 30px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 24px; }
+.checklist li { display: flex; gap: 14px; align-items: flex-start; min-width: 0; }
+.tick { flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--butter); color: var(--butter-ink); display: grid; place-items: center; transition: background .3s ease calc(var(--i) * 130ms), box-shadow .3s ease calc(var(--i) * 130ms), transform .45s cubic-bezier(.3,1.6,.5,1) calc(var(--i) * 130ms); }
+.tick svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.tick path { stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset .35s ease calc(var(--i) * 130ms + 120ms); }
+.js-anim .checklist:not(.in) .tick { background: transparent; box-shadow: inset 0 0 0 2px var(--line-strong); transform: scale(.88); }
+.js-anim .checklist:not(.in) .tick path { stroke-dashoffset: 1; }
+.check-txt b { display: block; font-weight: 800; line-height: 1.35; }
+.check-txt span { display: block; color: var(--muted); font-size: .93rem; line-height: 1.5; margin-top: 2px; }
+
+/* ---------- Typical day ---------- */
+.tl { position: relative; max-width: 1040px; margin: 0 auto; }
+.tl-list { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(26px, 4vw, 42px); }
+.tl-track { position: absolute; left: 154px; top: 24px; bottom: 24px; width: 4px; margin-left: -2px; background: var(--line); border-radius: 4px; }
+.tl-fill { position: absolute; inset: 0; background: var(--butter-deep); border-radius: 4px; transform-origin: top; transform: scaleY(1); }
+.tl-step { display: grid; grid-template-columns: 110px 48px minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "time dot body msg"; column-gap: 20px; align-items: start; }
+.tl-time { grid-area: time; text-align: right; font-weight: 800; font-size: .95rem; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 12px; }
+.tl-dot { grid-area: dot; position: relative; z-index: 1; width: 48px; height: 48px; border-radius: 50%; background: var(--butter); color: var(--butter-ink); display: grid; place-items: center; box-shadow: 0 0 0 5px var(--surface); transition: background .35s, color .35s, transform .45s cubic-bezier(.3,1.6,.5,1); }
+.js-anim .tl-step:not(.in) .tl-dot { background: var(--card); color: var(--muted); transform: scale(.82); box-shadow: 0 0 0 5px var(--surface), inset 0 0 0 2px var(--line-strong); }
+.tl-body { grid-area: body; padding-top: 8px; min-width: 0; }
+.tl-body p { margin: 6px 0 0; color: var(--muted); }
+.msg { grid-area: msg; min-width: 0; transform-origin: 0 100%; transition: transform .5s cubic-bezier(.3,1.5,.5,1) .12s, opacity .35s ease .12s; }
+.js-anim .tl-step:not(.in) .msg { transform: translateY(10px) scale(.88); opacity: .45; }
+.msg-meta { display: flex; gap: 8px; align-items: baseline; margin: 0 0 5px 8px; font-size: .76rem; font-weight: 800; color: var(--muted); }
+.msg-meta span { font-weight: 600; font-variant-numeric: tabular-nums; }
+.bubble { display: inline-block; max-width: 330px; background: var(--bubble); color: var(--bubble-ink); border-radius: 22px 22px 22px 6px; padding: 11px 15px; font-size: 1rem; line-height: 1.45; box-shadow: 0 10px 22px -18px rgb(var(--shadow) / .6); }
+.bubble img { display: block; width: 100%; height: auto; max-width: 230px; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 15px; margin: 2px 0 9px; }
+
+/* ---------- Meet Sissy ---------- */
+.about-media { position: relative; margin: 0; }
+.about-media > img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 30px; display: block; box-shadow: 0 30px 60px -36px rgb(var(--shadow) / .6); }
+.id-card { position: absolute; left: -14px; bottom: 26px; display: flex; align-items: center; gap: 12px; background: var(--card); border-radius: 22px; padding: 12px 18px 12px 12px; box-shadow: 0 20px 40px -20px rgb(var(--shadow) / .55); }
+.id-card .av { width: 56px; height: 56px; border-radius: 50%; background: var(--butter); color: var(--butter-ink); display: grid; place-items: center; font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 1.6rem; flex: none; }
+.id-card b { display: block; font-family: var(--font-display); font-size: 1.15rem; font-variation-settings: "SOFT" 100; }
+.id-card span { font-size: .84rem; color: var(--muted); font-weight: 700; }
+.letter { margin: 26px 0 0; padding: 24px 26px; background: var(--butter-soft); border-radius: 24px; font-family: var(--font-display); font-variation-settings: "SOFT" 100, "opsz" 24; font-size: 1.14rem; line-height: 1.6; position: relative; }
+.letter p { margin: 0; }
+.letter .sig { display: block; font-family: var(--font-hand); font-size: 1.8rem; margin-top: 6px; color: #B7802A; }
+.trust-list { list-style: none; padding: 0; margin: 30px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 26px; }
+.trust-list li { display: flex; gap: 14px; align-items: flex-start; min-width: 0; }
+.ic-box { flex: none; width: 42px; height: 42px; border-radius: 14px; display: grid; place-items: center; background: color-mix(in srgb, var(--roof) 22%, transparent); color: var(--fg); }
+.trust-list b { display: block; font-weight: 800; line-height: 1.35; }
+.trust-list span { display: block; color: var(--muted); font-size: .93rem; line-height: 1.5; margin-top: 2px; }
+.badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+.pill { display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px; border-radius: 999px; background: var(--card); font-weight: 800; font-size: .88rem; box-shadow: inset 0 0 0 1.5px var(--line); }
+.pill .ic { width: 19px; height: 19px; }
+.pill.gold { background: var(--butter); color: var(--butter-ink); box-shadow: none; }
+
+/* ---------- Reviews ---------- */
+.ph-note { display: inline-flex; align-items: center; gap: 8px; font-size: .84rem; font-weight: 800; color: var(--muted); border: 1.5px dashed var(--line-strong); border-radius: 999px; padding: 6px 14px; }
+.reviews { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.review { position: relative; background: var(--card); border-radius: 26px; padding: 28px 26px 24px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 0 0 1px var(--line), 0 20px 40px -30px rgb(var(--shadow) / .5); }
+.review .stars { color: var(--butter-deep); letter-spacing: .1em; font-size: 1.1rem; }
+.ph-tag { position: absolute; top: 18px; right: 18px; font-size: .66rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; border: 1.5px dashed var(--line-strong); color: var(--muted); }
+.review blockquote { margin: 0; font-family: var(--font-display); font-variation-settings: "SOFT" 100, "opsz" 24; font-size: 1.14rem; line-height: 1.5; }
+.reviewer { margin-top: auto; display: flex; align-items: center; gap: 12px; }
+.reviewer img { width: 54px; height: 54px; border-radius: 50%; object-fit: cover; flex: none; }
+.reviewer b { display: block; font-weight: 800; }
+.reviewer span { font-size: .86rem; color: var(--muted); font-weight: 600; }
+
+/* ---------- Booking ---------- */
+.book-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, .9fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
+.book-form { display: grid; gap: 18px; min-width: 0; }
+.step { border: 0; margin: 0; padding: clamp(18px, 3vw, 26px); background: var(--card); border-radius: 24px; display: grid; gap: 16px; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.step legend { float: left; width: 100%; padding: 0; display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-variation-settings: "SOFT" 100; font-weight: 650; font-size: 1.3rem; }
+.step-n { width: 30px; height: 30px; border-radius: 50%; background: var(--butter); color: var(--butter-ink); display: grid; place-items: center; font-family: var(--font-body); font-weight: 800; font-size: .9rem; flex: none; }
+.row2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.field { display: grid; gap: 6px; min-width: 0; align-content: start; }
+.field > label, .lbl { font-weight: 800; font-size: .88rem; }
+.field small { color: var(--muted); font-size: .82rem; }
+.book-form input:not([type=radio]):not([type=checkbox]), .book-form select, .book-form textarea { font: inherit; font-size: 1rem; color: var(--fg); background: var(--surface); border: 1.5px solid var(--line-strong); border-radius: 14px; padding: 12px 14px; width: 100%; min-width: 0; transition: border-color .2s, box-shadow .2s; }
+.book-form textarea { min-height: 84px; resize: vertical; line-height: 1.5; }
+.book-form input:focus, .book-form select:focus, .book-form textarea:focus { outline: none; border-color: var(--butter-deep); box-shadow: 0 0 0 4px color-mix(in srgb, var(--butter) 45%, transparent); }
+.book-form ::placeholder { color: color-mix(in srgb, var(--muted) 70%, transparent); }
+.opt-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.opt { position: relative; display: flex; flex-direction: column; gap: 4px; padding: 16px 16px 15px; border-radius: 18px; border: 1.5px solid var(--line-strong); background: var(--surface); cursor: pointer; transition: border-color .2s, box-shadow .2s, background .2s; min-width: 0; }
+.opt input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+.opt:has(input:checked) { border-color: var(--butter-deep); background: var(--card); box-shadow: 0 0 0 3px color-mix(in srgb, var(--butter) 55%, transparent); }
+.opt:has(input:focus-visible) { outline: 3px solid var(--butter-deep); outline-offset: 2px; }
+.opt:has(input:disabled) { opacity: .5; cursor: not-allowed; }
+.opt .mark { position: absolute; top: 15px; right: 15px; width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--line-strong); background: var(--card); transition: background .2s, border-color .2s; }
+.opt:has(input:checked) .mark { border-color: var(--butter-deep); background: var(--butter-deep); box-shadow: inset 0 0 0 4px var(--card); }
+.o-title { font-weight: 800; padding-right: 28px; }
+.o-price { font-weight: 700; color: var(--muted); font-size: .9rem; font-variant-numeric: tabular-nums; }
+.o-sub { color: var(--muted); font-size: .86rem; line-height: 1.45; }
+.o-tag { align-self: flex-start; background: var(--butter); color: var(--butter-ink); font-weight: 800; font-size: .7rem; padding: 2px 9px; border-radius: 999px; margin-bottom: 2px; }
+.opt.row { flex-direction: row; align-items: center; gap: 14px; }
+.opt.row .mark { position: static; flex: none; border-radius: 8px; }
+.opt.row:has(input:checked) .mark { background: var(--butter) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233A2E0E' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12.5 4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 15px no-repeat; border-color: var(--butter-deep); box-shadow: none; }
+.opt.row .o-main { flex: 1; min-width: 0; display: grid; gap: 1px; }
+.opt.row .o-title { padding-right: 0; }
+.opt.row .o-price { white-space: nowrap; }
+.extras { display: grid; gap: 10px; }
+.seg { display: inline-flex; flex-wrap: wrap; gap: 4px; background: var(--surface); border-radius: 999px; padding: 4px; box-shadow: inset 0 0 0 1.5px var(--line-strong); justify-self: start; }
+.seg label { position: relative; padding: 8px 18px; border-radius: 999px; font-weight: 800; font-size: .94rem; cursor: pointer; transition: background .2s; }
+.seg input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.seg label:has(input:checked) { background: var(--butter); color: var(--butter-ink); }
+.seg label:has(input:focus-visible) { outline: 3px solid var(--butter-deep); outline-offset: 2px; }
+.pets-list { display: grid; gap: 14px; }
+.pet { border-radius: 18px; background: var(--surface); padding: 16px; display: grid; gap: 12px; box-shadow: inset 0 0 0 1.5px var(--line); }
+.pet-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.pet-head b { font-weight: 800; display: inline-flex; align-items: center; gap: 8px; }
+.pet .book-form input, .pet input, .pet select, .pet textarea { background: var(--card) !important; }
+.link-btn { background: none; border: 0; font: inherit; font-weight: 800; font-size: .88rem; color: var(--muted); cursor: pointer; padding: 6px 8px; border-radius: 8px; text-decoration: underline; text-underline-offset: 3px; }
+.link-btn:hover { color: var(--fg); }
+.add-pet { justify-self: start; display: inline-flex; align-items: center; gap: 8px; font: inherit; font-weight: 800; font-size: .95rem; color: var(--fg); background: transparent; border: 1.5px dashed var(--line-strong); border-radius: 999px; padding: 10px 18px; cursor: pointer; }
+.add-pet:hover { border-color: var(--butter-deep); }
+.submit-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
+.btn-lg { padding: 17px 30px; font-size: 1.08rem; }
+.form-error { margin: 0; color: var(--danger); font-weight: 700; }
+.summary { position: sticky; top: 20px; background: var(--card); border-radius: 26px; padding: 22px; display: grid; gap: 16px; box-shadow: 0 0 0 1px var(--line), 0 30px 60px -36px rgb(var(--shadow) / .55); }
+.sum-head { display: flex; align-items: center; gap: 14px; }
+.sum-head img { width: 68px; height: 68px; border-radius: 18px; object-fit: cover; flex: none; }
+.sum-head h3 { font-size: 1.2rem; }
+.sum-head p { margin: 2px 0 0; color: var(--muted); font-size: .9rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.sum-lines { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.sum-lines li { display: flex; justify-content: space-between; gap: 14px; font-size: .95rem; }
+.sum-lines li > span:first-child { min-width: 0; }
+.sum-lines li small { display: block; color: var(--muted); font-size: .82rem; }
+.sum-lines li > span:last-child { font-weight: 800; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sum-lines .free { color: var(--ok); }
+.sum-warn { margin: 0; background: color-mix(in srgb, var(--butter) 35%, transparent); border-radius: 12px; padding: 9px 12px; font-size: .86rem; font-weight: 700; }
+.sum-total { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; border-top: 1.5px dashed var(--line-strong); padding-top: 14px; }
+.sum-total span { font-weight: 800; }
+.sum-total b { font-family: var(--font-display); font-variation-settings: "SOFT" 100; font-size: 2.1rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
+.pay { display: flex; flex-wrap: wrap; gap: 6px; }
+.pay span { font-size: .75rem; font-weight: 800; padding: 4px 10px; border-radius: 999px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
+.summary .btn { width: 100%; }
+.confirm { max-width: 660px; margin: 0 auto; text-align: center; background: var(--card); border-radius: 30px; padding: clamp(28px, 5vw, 48px); display: grid; gap: 16px; justify-items: center; box-shadow: 0 0 0 1px var(--line), 0 30px 60px -36px rgb(var(--shadow) / .55); }
+.confirm:focus { outline: none; }
+.confirm p { margin: 0; color: var(--muted); max-width: 32rem; }
+.confirm h3 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
+#cf-phone { white-space: nowrap; }
+.confirm-icon { width: 84px; height: 84px; border-radius: 50%; background: var(--butter); color: var(--butter-ink); display: grid; place-items: center; }
+.confirm-icon svg { width: 42px; height: 42px; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.confirm-icon path { stroke-dasharray: 1; animation: draw .6s ease .15s both; }
+@keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.recap { width: 100%; margin: 4px 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px 18px; text-align: left; background: var(--surface); border-radius: 18px; padding: 18px 20px; }
+.recap dt { font-weight: 800; font-size: .88rem; color: var(--muted); }
+.recap dd { margin: 0; font-weight: 700; overflow-wrap: anywhere; }
+.demo-note { font-size: .84rem !important; border: 1.5px dashed var(--line-strong); border-radius: 12px; padding: 8px 12px; }
+.confirm .ctas { justify-content: center; }
+
+/* ---------- FAQ ---------- */
+.faq-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(28px, 5vw, 80px); align-items: start; }
+.faq-side { position: sticky; top: 24px; display: grid; gap: 22px; }
+.faq-side .sec-head { margin-bottom: 0; }
+.ask-card { background: var(--butter-soft); border-radius: 24px; padding: 22px; display: grid; gap: 12px; justify-items: start; }
+.ask-card p { margin: 0; color: var(--muted); }
+.faq details { border-bottom: 1.5px solid var(--line); }
+.faq details:first-child { border-top: 1.5px solid var(--line); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 2px; font-weight: 800; font-size: 1.06rem; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary:hover { color: var(--fg); }
+.pm { flex: none; width: 32px; height: 32px; border-radius: 50%; background: color-mix(in srgb, var(--roof) 20%, transparent); display: grid; place-items: center; transition: transform .3s ease, background .3s; }
+.pm svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; }
+details[open] .pm { transform: rotate(45deg); background: var(--butter); color: var(--butter-ink); }
+.ans { padding: 0 48px 22px 2px; color: var(--muted); }
+.ans p { margin: 0; }
+.ans p + p { margin-top: 10px; }
+
+/* ---------- Footer ---------- */
+.foot { padding-block: clamp(56px, 8vw, 100px) 36px; }
+.cta-band { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 28px; background: var(--butter); color: var(--butter-ink); border-radius: 34px; padding: clamp(28px, 5vw, 52px); box-shadow: 0 0 0 1px var(--line), 0 30px 60px -40px rgb(var(--shadow) / .55); }
+.cta-band p { margin: 10px 0 0; color: color-mix(in srgb, var(--butter-ink) 78%, transparent); max-width: 34rem; }
+.cta-band .ctas { margin: 0; }
+.cta-band .btn-primary { background: var(--fg); color: #FFFFFF; box-shadow: 0 12px 26px -12px rgb(var(--shadow) / .6); }
+.foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1.2fr 1.3fr; gap: 32px; margin-top: clamp(48px, 6vw, 72px); }
+.foot-brand p { margin: 14px 0 0; color: var(--muted); max-width: 22rem; }
+.foot h4 { margin: 0 0 14px; font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 800; }
+.foot ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.foot ul a { text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; }
+.foot ul a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.foot ul a .ic { width: 20px; height: 20px; color: var(--muted); }
+.areas { display: flex !important; flex-wrap: wrap; gap: 6px !important; }
+.areas li { font-size: .84rem; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--card); box-shadow: inset 0 0 0 1px var(--line); }
+.foot-bottom { margin-top: 48px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px 20px; font-size: .86rem; color: var(--muted); }
+
+/* ---------- Text Sissy panel ---------- */
+.text-dlg { border: 0; border-radius: 28px; padding: 30px 24px 22px; width: min(380px, calc(100vw - 32px)); background: var(--card); color: var(--fg); text-align: center; box-shadow: 0 40px 80px -30px rgb(var(--shadow) / .6); }
+.text-dlg::backdrop { background: rgb(31 51 73 / .45); backdrop-filter: blur(3px); }
+.text-dlg[open] { animation: dlg-pop .25s cubic-bezier(.3,1.4,.5,1); }
+@keyframes dlg-pop { from { transform: scale(.94); opacity: 0; } }
+.td-close { position: absolute; top: 12px; right: 12px; width: 38px; height: 38px; border-radius: 50%; border: 0; background: var(--surface); color: var(--fg); font-size: 1.4rem; line-height: 1; cursor: pointer; }
+.text-dlg .av { width: 64px; height: 64px; margin: 0 auto 10px; border-radius: 50%; background: var(--butter); color: var(--butter-ink); display: grid; place-items: center; font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 1.8rem; }
+.text-dlg h3 { font-size: 1.5rem; }
+.text-dlg p { margin: 0; }
+.td-num { font-family: var(--font-display); font-variation-settings: "SOFT" 100; font-size: 2rem; font-weight: 700; font-variant-numeric: tabular-nums; margin: 4px 0 18px !important; user-select: all; -webkit-user-select: all; }
+.td-actions { display: grid; gap: 10px; }
+.td-actions .btn { width: 100%; }
+.td-status { min-height: 1.4em; margin-top: 10px !important; font-weight: 700; color: var(--ok); font-size: .9rem; }
+@media (prefers-reduced-motion: reduce) { .text-dlg[open] { animation: none; } }
+
+/* ---------- Sticky mobile CTA ---------- */
+.sticky-cta { display: none; }
+
+@media (max-width: 1100px) {
+  .svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 960px) {
+  .book-grid { grid-template-columns: minmax(0, 1fr); }
+  .summary { position: static; }
+  .reviews { grid-template-columns: minmax(0, 1fr); max-width: 560px; margin-inline: auto; }
+}
+@media (max-width: 900px) {
+  .split, .faq-grid { grid-template-columns: minmax(0, 1fr); }
+  .faq-side { position: static; }
+  .photo, .about-media { max-width: 520px; width: 100%; margin-inline: auto; }
+  .photo > img, .about-media > img { aspect-ratio: 5 / 4; }
+  .paper-note { right: 10px; bottom: -22px; }
+  .id-card { left: 10px; bottom: -22px; }
+  .cta-band { grid-template-columns: minmax(0, 1fr); }
+  .sticky-cta { display: flex; gap: 10px; position: fixed; z-index: 50; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); transform: translateY(150%); transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+  .sticky-cta.show { transform: none; }
+  .sticky-cta .btn-primary { flex: 1; padding-block: 16px; box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 -3px 0 color-mix(in srgb, var(--butter-deep) 70%, transparent) inset, 0 16px 34px -10px rgb(var(--shadow) / .6); }
+  .sticky-cta .round { width: 56px; height: 56px; flex: none; border-radius: 50%; background: var(--card); color: var(--fg); display: grid; place-items: center; box-shadow: 0 0 0 1px var(--line), 0 16px 34px -12px rgb(var(--shadow) / .6); }
+  .foot { padding-bottom: 110px; }
+}
+@media (max-width: 760px) {
+  .tl-track { left: 24px; }
+  .tl-step { grid-template-columns: 48px minmax(0, 1fr); grid-template-areas: "dot time" "dot body" "dot msg"; column-gap: 16px; row-gap: 6px; }
+  .tl-time { text-align: left; padding-top: 2px; }
+  .tl-body { padding-top: 0; }
+  .msg { margin-top: 8px; }
+  .opt-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+  .svc-grid, .checklist, .trust-list { grid-template-columns: minmax(0, 1fr); }
+  .row2.stack { grid-template-columns: minmax(0, 1fr); }
+  .foot-grid { grid-template-columns: minmax(0, 1fr); }
+  .ans { padding-right: 4px; }
+  .opt.row { align-items: flex-start; flex-wrap: wrap; }
+  .opt.row .o-price { margin-left: 36px; }
+  .opt.row .o-main { flex-basis: calc(100% - 40px); }
+  .summary .sum-head img { width: 56px; height: 56px; }
+  .book-form input[type=date] { padding-inline: 10px; font-size: .95rem; }
+  .foot nav ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 380px) {
+  .nav { gap: 8px; }
+  .brand { gap: 7px; }
+  .brand svg { width: 32px; height: 32px; }
+  .brand-text small { font-size: .56rem; letter-spacing: .16em; }
+  .brand-text b { font-size: 1.25rem; }
+  .nav-right { gap: 8px; }
+  .nav-right .btn-small { padding: 9px 12px; font-size: .82rem; }
+  .menu-btn { width: 40px; height: 40px; }
+  h2 { font-size: 1.75rem; }
+  .ask-card .btn { white-space: normal; flex-wrap: wrap; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sticky-cta, .svc, .tick, .tick path, .msg, .tl-dot, .pm { transition: none; }
+  .confirm-icon path { animation: none; }
+}
+</style>
+<meta name="description" content="In-home house sitting and pet care in Sacramento, CA. Your pets stay home while Sissy handles walks, meals, plants, mail and daily photo updates.">
+<meta name="theme-color" content="#D3E5F3">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sitting with Sissy · House & Pet Sitting in Sacramento">
+<meta property="og:description" content="In-home house sitting and pet care in Sacramento, CA. Your pets stay home while Sissy handles walks, meals, plants, mail and daily photo updates.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M6 22 L24 7 L42 22 V40 a4 4 0 0 1 -4 4 H10 a4 4 0 0 1 -4 -4 Z' fill='%23F7DA7B'/%3E%3Cpath d='M3 23 L24 5.5 L45 23' fill='none' stroke='%231F3349' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='18.5' cy='25' r='2.6' fill='%233A2E0E'/%3E%3Ccircle cx='24' cy='22.5' r='2.6' fill='%233A2E0E'/%3E%3Ccircle cx='29.5' cy='25' r='2.6' fill='%233A2E0E'/%3E%3Cpath d='M24 28.5c-4.5 0-7 4.2-7 6.6 0 2.4 2.2 3 3.6 3 1.4 0 2-.8 3.4-.8s2 .8 3.4.8c1.4 0 3.6-.6 3.6-3 0-2.4-2.5-6.6-7-6.6Z' fill='%233A2E0E'/%3E%3C/svg%3E">
+</head>
+<body>
+<div class="wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="#top" aria-label="Sitting with Sissy, home">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M6 22 L24 7 L42 22 V40 a4 4 0 0 1 -4 4 H10 a4 4 0 0 1 -4 -4 Z" fill="var(--butter)"/>
+        <path d="M3 23 L24 5.5 L45 23" fill="none" stroke="var(--fg)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="18.5" cy="25" r="2.6" fill="var(--butter-ink)"/><circle cx="24" cy="22.5" r="2.6" fill="var(--butter-ink)"/><circle cx="29.5" cy="25" r="2.6" fill="var(--butter-ink)"/>
+        <path d="M24 28.5c-4.5 0-7 4.2-7 6.6 0 2.4 2.2 3 3.6 3 1.4 0 2-.8 3.4-.8s2 .8 3.4.8c1.4 0 3.6-.6 3.6-3 0-2.4-2.5-6.6-7-6.6Z" fill="var(--butter-ink)"/>
+      </svg>
+      <span class="brand-text"><small>Sitting with</small><b>Sissy</b></span>
+    </a>
+    <ul class="links" id="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#day">How it works</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a class="btn btn-primary btn-small" href="#book">Book a sitter</a>
+      <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <section class="hero" id="top">
+    <section class="copy" aria-labelledby="hero-title">
+      <span class="eyebrow"><i></i>In-home pet &amp; house sitting · Sacramento</span>
+      <h1 id="hero-title">
+        <span class="line">Your pets <span class="hl">stay home.</span></span>
+        <span class="line soft">You travel worry&#8209;free.</span>
+      </h1>
+      <p class="lede">Sissy comes to your home to care for your pets and keep an eye on your house, with walks, meals, cuddles, plant watering and daily photo updates, so everything stays just the way they like it.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#book">
+          Book a sitter
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="sms:+19165550123" data-sms>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5c0 4.1-3.8 7.5-8.5 7.5-1.2 0-2.3-.2-3.3-.6L4 19.5l1.2-3.6C4.4 14.7 4 13.2 4 11.5 4 7.4 7.8 4 12 4s8 3.4 8 7.5Z"/></svg>
+          Text Sissy <span class="num" data-phone-text>(916) 555-0123</span>
+        </a>
+      </div>
+      <p class="trust">
+        <span class="stars" aria-label="Five star rating">★★★★★</span>
+        <span>Trusted by pet parents in Sacramento</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span>Insured &amp; bonded</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span>Free meet &amp; greet</span>
+      </p>
+    </section>
+
+    <div class="stage">
+      <svg id="scene" viewBox="0 0 900 740" role="img" aria-label="A cozy house front. A black-and-tan puppy and a round grey cat rest their paws on the open windowsill and watch you, with curtains, a porch light, a potted plant and a welcome mat by the door.">
+        <defs>
+          <filter id="fuzz" x="-15%" y="-15%" width="130%" height="130%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="2" seed="4" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G" result="d"/>
+            <feTurbulence type="fractalNoise" baseFrequency="0.08 1.1" numOctaves="2" seed="9" result="s"/>
+            <feColorMatrix in="s" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.1 .62" result="sa"/>
+            <feComposite in="sa" in2="d" operator="in" result="strands"/>
+            <feMerge><feMergeNode in="d"/><feMergeNode in="strands"/></feMerge>
+          </filter>
+          <filter id="fuzzBig" x="-15%" y="-15%" width="130%" height="130%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="2" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="11" xChannelSelector="R" yChannelSelector="G" result="d"/>
+            <feTurbulence type="fractalNoise" baseFrequency="0.07 1.2" numOctaves="2" seed="7" result="s"/>
+            <feColorMatrix in="s" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.1 .62" result="sa"/>
+            <feComposite in="sa" in2="d" operator="in" result="strands"/>
+            <feMerge><feMergeNode in="d"/><feMergeNode in="strands"/></feMerge>
+          </filter>
+          <filter id="blur6" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="6"/></filter>
+          <filter id="blur3" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"/></filter>
+
+          <linearGradient id="wallG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--wall)"/><stop offset="1" style="stop-color:var(--wall-shade)"/></linearGradient>
+          <pattern id="siding" width="900" height="34" patternUnits="userSpaceOnUse"><rect y="31" width="900" height="3" fill="rgb(120 96 60 / .07)"/></pattern>
+          <radialGradient id="interiorG" cx="310" cy="380" r="260" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFEFC6"/><stop offset=".55" stop-color="#F6D79C"/><stop offset="1" stop-color="#D9A86A"/></radialGradient>
+          <linearGradient id="glassG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EAF4FB" stop-opacity=".55"/><stop offset="1" stop-color="#BFD6EA" stop-opacity=".25"/></linearGradient>
+          <linearGradient id="curtainG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#B7D0E6"/><stop offset=".25" stop-color="#D8E8F5"/><stop offset=".5" stop-color="#B3CCE3"/><stop offset=".75" stop-color="#DCEAF6"/><stop offset="1" stop-color="#AFC9E1"/></linearGradient>
+          <linearGradient id="sillG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--trim)"/><stop offset="1" style="stop-color:var(--trim-shade)"/></linearGradient>
+          <radialGradient id="porchGlow"><stop offset="0" stop-color="#FFE7A0" stop-opacity=".95"/><stop offset=".35" stop-color="#FFE29A" stop-opacity=".45"/><stop offset="1" stop-color="#FFE29A" stop-opacity="0"/></radialGradient>
+          <radialGradient id="bulbG"><stop offset="0" stop-color="#FFFBE6"/><stop offset=".6" stop-color="#FFE48A"/><stop offset="1" stop-color="#F2C24A"/></radialGradient>
+
+          <radialGradient id="dogHeadG" cx=".42" cy=".34" r=".7"><stop offset="0" stop-color="#5A5A62"/><stop offset=".55" stop-color="#2B2B31"/><stop offset="1" stop-color="#141418"/></radialGradient>
+          <radialGradient id="dogBodyG" cx=".45" cy=".25" r=".8"><stop offset="0" stop-color="#4A4A52"/><stop offset=".6" stop-color="#25252B"/><stop offset="1" stop-color="#121215"/></radialGradient>
+          <linearGradient id="dogEarG" x1="0" y1="0" x2=".3" y2="1"><stop offset="0" stop-color="#3E3E45"/><stop offset="1" stop-color="#18181C"/></linearGradient>
+          <radialGradient id="dogTanG" cx=".45" cy=".3" r=".75"><stop offset="0" stop-color="#E7AE70"/><stop offset=".6" stop-color="#C07A3D"/><stop offset="1" stop-color="#8E5226"/></radialGradient>
+          <radialGradient id="eyeWhiteG" cx=".4" cy=".35" r=".75"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".7" stop-color="#F3F5F8"/><stop offset="1" stop-color="#C9D2DD"/></radialGradient>
+          <radialGradient id="dogIrisG"><stop offset="0" stop-color="#5A2C0E"/><stop offset=".55" stop-color="#B8642A"/><stop offset=".85" stop-color="#D88A40"/><stop offset="1" stop-color="#6E3613"/></radialGradient>
+          <radialGradient id="noseG" cx=".4" cy=".3" r=".8"><stop offset="0" stop-color="#4B4B52"/><stop offset=".6" stop-color="#1D1D22"/><stop offset="1" stop-color="#08080A"/></radialGradient>
+
+          <radialGradient id="catHeadG" cx=".42" cy=".32" r=".72"><stop offset="0" stop-color="#B8BBC2"/><stop offset=".55" stop-color="#878A93"/><stop offset="1" stop-color="#5A5D66"/></radialGradient>
+          <radialGradient id="catBodyG" cx=".45" cy=".25" r=".8"><stop offset="0" stop-color="#A6A9B1"/><stop offset=".6" stop-color="#7A7D86"/><stop offset="1" stop-color="#53565F"/></radialGradient>
+          <linearGradient id="catEarInG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C98A90"/><stop offset="1" stop-color="#E6AEB2"/></linearGradient>
+          <radialGradient id="catIrisG" cx=".45" cy=".4" r=".6"><stop offset="0" stop-color="#FFF6A0"/><stop offset=".55" stop-color="#FFD91A"/><stop offset="1" stop-color="#D9A300"/></radialGradient>
+          <linearGradient id="catTailG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9A9DA5"/><stop offset="1" stop-color="#666971"/></linearGradient>
+
+          <clipPath id="openingClip"><rect x="105" y="255" width="410" height="262" rx="14"/></clipPath>
+        </defs>
+
+        <!-- sky decoration -->
+        <g class="cloud"><g class="s-cloud" opacity=".85"><ellipse cx="110" cy="92" rx="54" ry="20"/><ellipse cx="88" cy="80" rx="26" ry="20"/><ellipse cx="124" cy="74" rx="30" ry="24"/></g></g>
+
+        <!-- ground -->
+        <path class="s-ground" d="M0 690 Q450 668 900 690 V740 H0 Z"/>
+        <ellipse cx="450" cy="690" rx="440" ry="16" fill="rgb(32 51 73 / .12)" filter="url(#blur6)"/>
+
+        <!-- house body -->
+        <path d="M40 682 V196 L450 74 L860 196 V682 Z" fill="url(#wallG)"/>
+        <path d="M40 682 V196 L450 74 L860 196 V682 Z" fill="url(#siding)"/>
+        <rect class="s-wall-shade" x="36" y="668" width="828" height="16" rx="4"/>
+        <!-- roof -->
+        <path class="s-roof-shade" d="M14 222 L450 54 L886 222" fill="none" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 6)" opacity=".9"/>
+        <path class="s-roof" d="M14 216 L450 48 L886 216" fill="none" stroke-width="46" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M30 206 L450 44 L870 206" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- attic heart window -->
+        <circle class="s-trim" cx="450" cy="160" r="30"/>
+        <circle cx="450" cy="160" r="21" fill="#F4D99A"/>
+        <path d="M450 171 C441 164 436 159 436 154 a7 7 0 0 1 14 -2 a7 7 0 0 1 14 2 c0 5 -5 10 -14 17 Z" fill="#E7A84B" opacity=".9"/>
+
+        <!-- porch light glow on wall -->
+        <circle class="s-glow" cx="592" cy="350" r="150" fill="url(#porchGlow)"/>
+
+        <!-- window shadow + frame -->
+        <rect x="86" y="240" width="460" height="330" rx="26" fill="rgb(32 51 73 / .16)" filter="url(#blur6)"/>
+        <rect class="s-trim" x="80" y="230" width="460" height="330" rx="26"/>
+        <rect x="80" y="230" width="460" height="330" rx="26" fill="none" stroke="rgb(120 96 60 / .12)" stroke-width="2"/>
+        <rect x="105" y="255" width="410" height="262" rx="14" fill="url(#interiorG)"/>
+
+        <!-- interior: picture frame + lamp glow -->
+        <g opacity=".9">
+          <rect x="285" y="276" width="50" height="40" rx="5" fill="#C99A5E"/>
+          <rect x="291" y="282" width="38" height="28" rx="3" fill="#FFF4DA"/>
+          <g fill="#C99A5E"><circle cx="304" cy="294" r="3"/><circle cx="310" cy="291" r="3"/><circle cx="316" cy="294" r="3"/><ellipse cx="310" cy="301" rx="6" ry="4.5"/></g>
+        </g>
+        <ellipse cx="460" cy="300" rx="70" ry="50" fill="#FFF6D8" opacity=".5" filter="url(#blur6)"/>
+
+        <!-- curtains (behind pets) -->
+        <g clip-path="url(#openingClip)">
+          <path d="M105 255 H178 C172 318 156 380 142 432 C152 462 164 492 172 520 H105 Z" fill="url(#curtainG)"/>
+          <path d="M515 255 H442 C448 318 464 380 478 432 C468 462 456 492 448 520 H515 Z" fill="url(#curtainG)"/>
+          <path d="M105 255 H178 C172 318 156 380 142 432 C152 462 164 492 172 520 H105 Z" fill="rgb(40 70 110 / .08)" transform="translate(4 0)" opacity=".7"/>
+        </g>
+        <g>
+          <rect x="120" y="424" width="34" height="14" rx="7" class="s-butter"/>
+          <circle cx="151" cy="431" r="7" fill="var(--butter-deep)"/>
+          <rect x="466" y="424" width="34" height="14" rx="7" class="s-butter"/>
+          <circle cx="469" cy="431" r="7" fill="var(--butter-deep)"/>
+        </g>
+
+        <!-- ===================== PETS ===================== -->
+        <g clip-path="url(#openingClip)">
+          <!-- DOG -->
+          <g id="dog" transform="translate(222 412)">
+            <ellipse cx="0" cy="98" rx="98" ry="40" fill="rgb(70 40 10 / .25)" filter="url(#blur6)"/>
+            <g id="dog-body">
+              <ellipse cx="0" cy="112" rx="80" ry="78" fill="url(#dogBodyG)" filter="url(#fuzzBig)"/>
+              <path d="M-50 60 Q0 92 50 60" fill="none" stroke="#A9521F" stroke-width="15" stroke-linecap="round"/>
+              <path d="M-50 58 Q0 89 50 58" fill="none" stroke="#CF6F31" stroke-width="12" stroke-linecap="round"/>
+              <path d="M-44 59 Q0 86 44 59" fill="none" stroke="#F0A56A" stroke-width="1.4" stroke-dasharray="4 4" stroke-linecap="round"/>
+              <g id="dog-tag"><path d="M4 78 v6" stroke="#9BA3AD" stroke-width="2.5"/><circle cx="4" cy="90" r="7.5" fill="#C9D0D8"/><circle cx="2" cy="88" r="2.5" fill="#fff" opacity=".8"/></g>
+            </g>
+            <g id="dog-head">
+              <ellipse cx="0" cy="58" rx="56" ry="18" fill="rgb(0 0 0 / .35)" filter="url(#blur6)"/>
+              <path d="M-80 -6 C-80 -52 -44 -78 0 -78 C44 -78 80 -52 80 -6 C80 38 50 66 0 66 C-50 66 -80 38 -80 -6 Z" fill="url(#dogHeadG)" filter="url(#fuzzBig)"/>
+              <g fill="#3A3A42" filter="url(#fuzz)">
+                <ellipse cx="-14" cy="-76" rx="14" ry="9" transform="rotate(-20 -14 -76)"/>
+                <ellipse cx="6" cy="-80" rx="12" ry="9" transform="rotate(10 6 -80)"/>
+                <ellipse cx="22" cy="-74" rx="11" ry="8" transform="rotate(30 22 -74)"/>
+              </g>
+              <g id="dog-muzzle">
+                <ellipse cx="0" cy="30" rx="58" ry="38" fill="url(#dogTanG)" filter="url(#fuzz)"/>
+              </g>
+              <g id="dog-face">
+                <g fill="#C78245" filter="url(#fuzz)"><ellipse id="dog-browL" cx="-30" cy="-42" rx="10" ry="6.5"/><ellipse id="dog-browR" cx="30" cy="-42" rx="10" ry="6.5"/></g>
+                <g id="dog-eyeL">
+                  <ellipse cx="-27" cy="-10" rx="25" ry="27" fill="#0E0E12" opacity=".45"/>
+                  <ellipse cx="-27" cy="-10" rx="21" ry="23" fill="url(#eyeWhiteG)"/>
+                  <g id="dog-pupilL"><circle cx="-27" cy="-8" r="13" fill="url(#dogIrisG)"/><circle cx="-27" cy="-8" r="7.5" fill="#140A04"/><circle cx="-22.5" cy="-13" r="4" fill="#fff"/><circle cx="-31" cy="-4" r="1.8" fill="#fff" opacity=".8"/></g>
+                </g>
+                <g id="dog-eyeR">
+                  <ellipse cx="27" cy="-10" rx="25" ry="27" fill="#0E0E12" opacity=".45"/>
+                  <ellipse cx="27" cy="-10" rx="21" ry="23" fill="url(#eyeWhiteG)"/>
+                  <g id="dog-pupilR"><circle cx="27" cy="-8" r="13" fill="url(#dogIrisG)"/><circle cx="27" cy="-8" r="7.5" fill="#140A04"/><circle cx="31.5" cy="-13" r="4" fill="#fff"/><circle cx="23" cy="-4" r="1.8" fill="#fff" opacity=".8"/></g>
+                </g>
+                <path id="dog-tongue" d="M-9 47 Q-10 68 0 69 Q10 68 9 47 Z" fill="#E77C88" opacity="0"/>
+                <path d="M0 37 V45 M-11 45 Q0 52 11 45" fill="none" stroke="#3B200C" stroke-width="2.6" stroke-linecap="round"/>
+                <g id="dog-nose">
+                  <path d="M-23 16 C-23 3 23 3 23 16 C23 30 9 38 0 38 C-9 38 -23 30 -23 16 Z" fill="url(#noseG)"/>
+                  <ellipse cx="-7" cy="11" rx="8" ry="3.6" fill="#fff" opacity=".45"/>
+                  <ellipse cx="-8" cy="22" rx="4" ry="2.4" fill="#000" opacity=".6"/><ellipse cx="8" cy="22" rx="4" ry="2.4" fill="#000" opacity=".6"/>
+                </g>
+              </g>
+              <g id="dog-earL"><path d="M-48 -64 C-86 -72 -114 -32 -112 18 C-110 62 -98 98 -76 102 C-54 106 -50 72 -52 32 C-54 0 -36 -40 -48 -64 Z" fill="url(#dogEarG)" filter="url(#fuzzBig)"/></g>
+              <g id="dog-earR"><path d="M48 -64 C86 -72 114 -32 112 18 C110 62 98 98 76 102 C54 106 50 72 52 32 C54 0 36 -40 48 -64 Z" fill="url(#dogEarG)" filter="url(#fuzzBig)"/></g>
+            </g>
+            <ellipse class="pet-hit" data-pet="dog" cx="0" cy="20" rx="105" ry="110" fill="transparent"/>
+          </g>
+
+          <!-- CAT -->
+          <g id="cat" transform="translate(402 428)">
+            <ellipse cx="0" cy="90" rx="110" ry="40" fill="rgb(70 40 10 / .25)" filter="url(#blur6)"/>
+            <g id="cat-body">
+              <ellipse cx="0" cy="112" rx="96" ry="84" fill="url(#catBodyG)" filter="url(#fuzzBig)"/>
+              <ellipse cx="0" cy="88" rx="46" ry="40" fill="#C2C4CA" opacity=".35" filter="url(#fuzz)"/>
+            </g>
+            <g id="cat-head">
+              <ellipse cx="0" cy="56" rx="64" ry="16" fill="rgb(0 0 0 / .25)" filter="url(#blur6)"/>
+              <g id="cat-earL">
+                <path d="M-76 -26 C-82 -66 -74 -100 -62 -110 C-42 -98 -22 -78 -16 -62 Z" fill="#7C7F88" filter="url(#fuzz)"/>
+                <path d="M-66 -40 C-70 -66 -66 -88 -60 -96 C-48 -86 -36 -74 -32 -64 Z" fill="url(#catEarInG)"/>
+              </g>
+              <g id="cat-earR">
+                <path d="M76 -26 C82 -66 74 -100 62 -110 C42 -98 22 -78 16 -62 Z" fill="#7C7F88" filter="url(#fuzz)"/>
+                <path d="M66 -40 C70 -66 66 -88 60 -96 C48 -86 36 -74 32 -64 Z" fill="url(#catEarInG)"/>
+              </g>
+              <path d="M-90 4 C-90 -46 -50 -72 0 -72 C50 -72 90 -46 90 4 C90 46 52 70 0 70 C-52 70 -90 46 -90 4 Z" fill="url(#catHeadG)" filter="url(#fuzzBig)"/>
+              <g id="cat-face">
+                <ellipse cx="0" cy="30" rx="34" ry="22" fill="#B9BBC2" opacity=".45" filter="url(#fuzz)"/>
+                <path d="M-44 -34 Q-31 -42 -16 -36 M44 -34 Q31 -42 16 -36" fill="none" stroke="#50535B" stroke-width="3.2" stroke-linecap="round" opacity=".55"/>
+                <g id="cat-eyeL">
+                  <circle cx="-29" cy="-8" r="22" fill="#45474E"/>
+                  <circle cx="-29" cy="-8" r="19.5" fill="url(#catIrisG)"/>
+                  <g id="cat-pupilL"><circle cx="-29" cy="-7" r="11.5" fill="#0B0B0D"/><circle cx="-24.5" cy="-12" r="4.5" fill="#fff"/><circle cx="-33" cy="-3" r="2" fill="#fff" opacity=".8"/></g>
+                </g>
+                <g id="cat-eyeR">
+                  <circle cx="29" cy="-8" r="22" fill="#45474E"/>
+                  <circle cx="29" cy="-8" r="19.5" fill="url(#catIrisG)"/>
+                  <g id="cat-pupilR"><circle cx="29" cy="-7" r="11.5" fill="#0B0B0D"/><circle cx="33.5" cy="-12" r="4.5" fill="#fff"/><circle cx="25" cy="-3" r="2" fill="#fff" opacity=".8"/></g>
+                </g>
+                <path d="M-6.5 15 Q0 11.5 6.5 15 Q3.5 22 0 23 Q-3.5 22 -6.5 15 Z" fill="#C4848A"/>
+                <path d="M0 23 V27" stroke="#5A3E42" stroke-width="1.8" stroke-linecap="round"/>
+                <ellipse id="cat-mouth" cx="0" cy="34" rx="4.2" ry="5.2" fill="#2B1F22"/>
+                <path id="cat-smile" d="M-9 28 Q-4.5 34 0 28 Q4.5 34 9 28" fill="none" stroke="#3A2A2D" stroke-width="2.2" stroke-linecap="round" opacity="0"/>
+                <g stroke="#F4F5F7" stroke-width="1.3" stroke-linecap="round" opacity=".8" fill="none">
+                  <path d="M-28 24 Q-60 16 -96 12"/><path d="M-28 28 Q-62 27 -98 28"/><path d="M-28 32 Q-60 38 -92 44"/>
+                  <path d="M28 24 Q60 16 96 12"/><path d="M28 28 Q62 27 98 28"/><path d="M28 32 Q60 38 92 44"/>
+                </g>
+              </g>
+            </g>
+            <ellipse class="pet-hit" data-pet="cat" cx="0" cy="20" rx="100" ry="110" fill="transparent"/>
+          </g>
+        </g>
+
+        <!-- valance -->
+        <path d="M105 255 H515 V276 a20.5 15 0 0 1 -41 0 a20.5 15 0 0 1 -41 0 a20.5 15 0 0 1 -41 0 a20.5 15 0 0 1 -41 0 a20.5 15 0 0 1 -41 0 a20.5 15 0 0 1 -41 0 a20.5 15 0 0 1 -41 0 a20.5 15 0 0 1 -41 0 a20.5 15 0 0 1 -41 0 a20.5 15 0 0 1 -41 0 Z" fill="#E5EFF8"/>
+        <path d="M105 271 H515" stroke="var(--butter)" stroke-width="4"/>
+        <rect x="105" y="255" width="410" height="34" fill="rgb(90 60 20 / .06)"/>
+
+        <!-- raised sash glass -->
+        <rect x="105" y="255" width="410" height="66" fill="url(#glassG)"/>
+        <path d="M150 255 L188 255 L140 321 L105 321 L105 300 Z" fill="#fff" opacity=".28"/>
+        <path d="M210 255 L224 255 L176 321 L162 321 Z" fill="#fff" opacity=".2"/>
+        <rect class="s-trim" x="306" y="255" width="8" height="66"/>
+        <rect class="s-trim" x="100" y="316" width="420" height="15" rx="4"/>
+        <rect x="100" y="328" width="420" height="5" rx="2" fill="rgb(80 60 30 / .12)"/>
+        <!-- checklist note taped to glass -->
+        <g transform="translate(424 262) rotate(4)">
+          <rect x="2" y="3" width="74" height="54" rx="3" fill="rgb(0 0 0 / .12)" filter="url(#blur3)"/>
+          <rect width="74" height="54" rx="3" fill="#FFFDF4"/>
+          <rect x="24" y="-6" width="28" height="11" rx="2" fill="var(--butter)" opacity=".85" transform="rotate(-6 38 0)"/>
+          <g font-family="Caveat, 'Bradley Hand', cursive" font-size="13.5" font-weight="600" fill="#33465C">
+            <text x="8" y="21">fed ✓  walk ✓</text>
+            <text x="8" y="36">plants ✓  mail ✓</text>
+            <text x="44" y="50" font-size="12" fill="#B7802A">♥ S.</text>
+          </g>
+        </g>
+        <!-- inner frame edge shadow -->
+        <rect x="105" y="255" width="410" height="262" rx="14" fill="none" stroke="rgb(60 40 10 / .14)" stroke-width="3"/>
+
+        <!-- herb pot on sill -->
+        <g>
+          <g class="leaves" fill="#79A986">
+            <ellipse cx="86" cy="474" rx="7" ry="14" transform="rotate(-25 86 474)"/>
+            <ellipse cx="98" cy="468" rx="7" ry="15"/>
+            <ellipse cx="110" cy="476" rx="7" ry="13" transform="rotate(28 110 476)"/>
+            <ellipse cx="98" cy="468" rx="2.5" ry="10" fill="#9CC5A6"/>
+          </g>
+        </g>
+
+        <!-- sill -->
+        <rect x="64" y="560" width="492" height="18" rx="9" fill="rgb(32 51 73 / .14)" filter="url(#blur6)"/>
+        <rect class="s-trim-shade" x="112" y="550" width="16" height="30" rx="5"/>
+        <rect class="s-trim-shade" x="492" y="550" width="16" height="30" rx="5"/>
+        <rect x="60" y="512" width="500" height="44" rx="13" fill="url(#sillG)"/>
+        <rect x="60" y="512" width="500" height="10" rx="5" fill="#fff" opacity=".45"/>
+        <path d="M84 512 L80 489 H116 L112 512 Z" class="s-butter"/>
+        <rect x="77" y="486" width="42" height="7" rx="3.5" fill="var(--butter-deep)"/>
+
+        <!-- paws over the sill -->
+        <g filter="url(#fuzz)">
+          <ellipse cx="190" cy="520" rx="26" ry="18" fill="url(#dogTanG)"/>
+          <ellipse cx="370" cy="523" rx="27" ry="18" fill="url(#catBodyG)"/>
+          <ellipse cx="434" cy="523" rx="27" ry="18" fill="url(#catBodyG)"/>
+        </g>
+        <g id="dog-pawR">
+          <ellipse cx="258" cy="521" rx="26" ry="18" fill="url(#dogTanG)" filter="url(#fuzz)"/>
+          <path d="M250 527 v8 M260 528 v8" stroke="#7A4419" stroke-opacity=".6" stroke-width="2" stroke-linecap="round" fill="none"/>
+        </g>
+        <g stroke-linecap="round" stroke-width="2" fill="none">
+          <g stroke="#7A4419" opacity=".6"><path d="M182 526 v8 M192 527 v8"/></g>
+          <g stroke="#4D5058" opacity=".55"><path d="M362 529 v8 M373 530 v8 M426 529 v8 M437 530 v8"/></g>
+        </g>
+
+        <!-- porch light -->
+        <g>
+          <path d="M592 306 V296 M578 290 H606" stroke="#3E4A58" stroke-width="5" stroke-linecap="round"/>
+          <rect x="584" y="282" width="16" height="10" rx="3" fill="#3E4A58"/>
+          <path d="M574 312 L592 298 L610 312 Z" fill="#3E4A58"/>
+          <rect x="577" y="312" width="30" height="40" rx="5" fill="url(#bulbG)"/>
+          <rect x="577" y="312" width="30" height="40" rx="5" fill="none" stroke="#3E4A58" stroke-width="3"/>
+          <path d="M592 312 V352" stroke="#3E4A58" stroke-width="2"/>
+          <rect x="574" y="351" width="36" height="7" rx="3.5" fill="#3E4A58"/>
+          <circle cx="592" cy="332" r="16" fill="#FFF3C4" opacity=".55" filter="url(#blur6)"/>
+        </g>
+
+        <!-- door -->
+        <path class="s-trim" d="M626 682 V362 A89 89 0 0 1 804 362 V682 Z"/>
+        <path class="s-door" d="M640 682 V362 A75 75 0 0 1 790 362 V682 Z"/>
+        <path d="M662 340 A53 53 0 0 1 768 340 Z" fill="#F7DB9C"/>
+        <path d="M662 340 A53 53 0 0 1 768 340 Z" fill="none" stroke="var(--trim)" stroke-width="5"/>
+        <path d="M715 290 V340 M680 314 L715 340 L750 314" stroke="var(--trim)" stroke-width="3" fill="none" opacity=".9"/>
+        <g class="s-door-shade" fill="none" stroke-width="4" opacity=".75">
+          <rect x="662" y="362" width="106" height="120" rx="10"/>
+          <rect x="662" y="500" width="106" height="160" rx="10"/>
+        </g>
+        <circle cx="760" cy="500" r="8" fill="#D9AE4E"/><circle cx="758" cy="498" r="3" fill="#FFF0BE"/>
+        <!-- door hanger -->
+        <g>
+          <path d="M760 503 L736 522 M760 503 L780 522" stroke="#8C6A2C" stroke-width="1.6"/>
+          <rect x="706" y="520" width="88" height="30" rx="8" class="s-butter"/>
+          <text x="750" y="541" text-anchor="middle" font-family="Caveat, 'Bradley Hand', cursive" font-weight="600" font-size="17" fill="#3A2E0E">Sissy's here ♥</text>
+        </g>
+
+        <!-- stoop + mat -->
+        <path class="s-step" d="M612 682 H818 L828 702 H602 Z"/>
+        <rect class="s-trim-shade" x="602" y="702" width="226" height="18" rx="4"/>
+        <path d="M648 684 H782 L792 700 H638 Z" fill="#C79B5E"/>
+        <path d="M652 686 H778 L786 698 H644 Z" fill="none" stroke="#A97E43" stroke-width="1.4"/>
+        <text x="715" y="697" text-anchor="middle" font-family="var(--font-body)" font-weight="800" font-size="11" letter-spacing="4" fill="#6E4E22">WELCOME</text>
+
+        <!-- potted plant -->
+        <g>
+          <ellipse cx="846" cy="728" rx="40" ry="8" fill="rgb(32 51 73 / .18)" filter="url(#blur3)"/>
+          <g class="leaves">
+            <path d="M846 650 C820 620 800 600 790 560 C820 568 842 600 846 650 Z" fill="#6E9E7C"/>
+            <path d="M846 650 C860 610 880 590 892 552 C866 560 846 600 846 650 Z" fill="#7FAE8B"/>
+            <path d="M846 652 C836 600 840 560 852 520 C866 560 860 610 846 652 Z" fill="#5F9170"/>
+            <path d="M846 655 C818 640 800 630 782 610 C806 606 832 620 846 655 Z" fill="#88B593"/>
+            <path d="M846 655 C870 640 890 632 900 612 C878 608 856 624 846 655 Z" fill="#6A9C78"/>
+            <path d="M852 520 C848 570 848 610 846 652" stroke="#4E7F5F" stroke-width="2" fill="none"/>
+          </g>
+          <path d="M814 650 H878 L868 730 H824 Z" class="s-butter"/>
+          <rect x="808" y="644" width="76" height="14" rx="6" fill="var(--butter-deep)"/>
+          <path d="M822 670 H870" stroke="#fff" stroke-opacity=".35" stroke-width="3"/>
+        </g>
+
+        <g id="hearts"></g>
+      </svg>
+
+      <aside class="update" aria-label="Example daily update from Sissy">
+        <header><span class="av" aria-hidden="true">S</span><span class="who">Sissy</span><span class="when">8:12 am</span></header>
+        <p>Breakfast is done and we're heading out for a walk. Both say hi!</p>
+        <div class="ticks"><span>Fed</span><span>Watered</span><span>Mail in</span></div>
+      </aside>
+    </div>
+  </section>
+</div>
+
+<!-- icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2.5"/><path d="m4 8 8 6 8-6"/></symbol>
+    <symbol id="i-plant" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-8"/><path d="M12 13c0-4 3-7 8-7 0 4-3 7-8 7Z"/><path d="M12 15c0-3-2.5-5.5-7-5.5 0 3 2.5 5.5 7 5.5Z"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z"/></symbol>
+    <symbol id="i-paw" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="6.5" cy="10" r="2"/><circle cx="10" cy="6.2" r="2"/><circle cx="14.6" cy="6.2" r="2"/><circle cx="18" cy="10" r="2"/><path d="M12.3 11.3c-3.4 0-5.8 3.4-5.8 5.8 0 1.9 1.6 2.4 2.9 2.4s1.7-.7 2.9-.7 1.7.7 2.9.7 2.9-.5 2.9-2.4c0-2.4-2.4-5.8-5.8-5.8Z"/></g></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7v8.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19.5Z"/><path d="M10 21v-6h4v6"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3.5 6 1 1 2-2M3.5 12l1 1 2-2M3.5 18l1 1 2-2"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="m11 12 8-8M16 7l2 2M14 9l2 2"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5c0 4.1-3.8 7.5-8.5 7.5-1.2 0-2.3-.2-3.3-.6L4 19.5l1.2-3.6C4.4 14.7 4 13.2 4 11.5 4 7.4 7.8 4 12 4s8 3.4 8 7.5Z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5.5c0 4.4 3 8 7 9.5 4-1.5 7-5.1 7-9.5V6Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-aid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5.5c0 4.4 3 8 7 9.5 4-1.5 7-5.1 7-9.5V6Z"/><path d="M12 9v6M9 12h6"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5A1.5 1.5 0 0 1 5.5 7H8l1.5-2h5L16 7h2.5A1.5 1.5 0 0 1 20 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.5Z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2Z"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17" cy="7" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8.5h2.5V5H14a3.5 3.5 0 0 0-3.5 3.5V11H8v3.5h2.5V21H14v-6.5h2.5L17 11h-3V9a.5.5 0 0 1 .5-.5Z"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5Z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></symbol>
+    <symbol id="i-blinds" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3.5" width="16" height="17" rx="2"/><path d="M4 8h16M4 12.5h16M12 12.5V17"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4.5h6V7M6 7l1 13h10l1-13"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  </defs>
+</svg>
+
+<main>
+  <!-- ==================== SERVICES ==================== -->
+  <section class="sec alt" id="services" aria-labelledby="svc-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Services &amp; pricing</span>
+        <h2 id="svc-title">Care that fits your trip</h2>
+        <p>Simple, upfront rates for Sacramento homes. Every first booking starts with a free meet &amp; greet at your place.</p>
+      </div>
+      <div class="svc-grid">
+        <article class="svc popular" style="--i:0">
+          <div class="svc-img">
+            <img src="img/overnight.jpg" width="800" height="600" loading="lazy" alt="A cozy living room with a sofa, a lamp and big sunny windows">
+            <span class="badge"><svg class="ic" style="width:14px;height:14px" aria-hidden="true"><use href="#i-heart"/></svg>Most popular</span>
+          </div>
+          <div class="svc-body">
+            <h3>Overnight House Sitting</h3>
+            <p>Sissy stays the night so your home is lived-in and secure. All home care is included, plus pet care if you need it.</p>
+            <span class="incl"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Pet care included</span>
+            <div class="svc-foot">
+              <p class="price"><b data-price="overnight">$85</b><span>/ night</span></p>
+              <a class="btn btn-primary btn-small" href="#book" data-pick="overnight" aria-label="Choose Overnight House Sitting">Choose</a>
+            </div>
+          </div>
+        </article>
+        <article class="svc" style="--i:1">
+          <div class="svc-img"><img src="img/checkins.jpg" width="800" height="600" loading="lazy" alt="A delivery box waiting on a doormat inside a front door, next to a plant"></div>
+          <div class="svc-body">
+            <h3>Daily Home Check-ins</h3>
+            <p>One or two visits a day to secure the home, bring in mail and packages, water plants, rotate lights and check for any issues.</p>
+            <div class="svc-foot">
+              <p class="price"><b data-price="visit">$30</b><span>/ visit</span></p>
+              <a class="btn btn-soft btn-small" href="#book" data-pick="visits" aria-label="Choose Daily Home Check-ins">Choose</a>
+            </div>
+          </div>
+        </article>
+        <article class="svc" style="--i:2">
+          <div class="svc-img"><img src="img/extended.jpg" width="800" height="600" loading="lazy" alt="A blue two-story house with a front porch and palm trees"></div>
+          <div class="svc-body">
+            <h3>Extended Stays</h3>
+            <p>Longer house sits for vacations, work trips or seasonal travel, with a lower nightly rate from 7 nights.</p>
+            <div class="svc-foot">
+              <p class="price"><em>From</em><b data-price="extended">$70</b><span>/ night</span></p>
+              <a class="btn btn-soft btn-small" href="#book" data-pick="extended" aria-label="Choose Extended Stays">Choose</a>
+            </div>
+          </div>
+        </article>
+        <article class="svc" style="--i:3">
+          <div class="svc-img"><img src="img/petcare.jpg" width="800" height="600" loading="lazy" alt="A golden retriever napping in the sun on an orange couch"></div>
+          <div class="svc-body">
+            <h3>Pet Care Add-on</h3>
+            <p>Feeding, fresh water, walks, litter, playtime and medication for any pets in the home.</p>
+            <span class="incl"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Free with overnight stays</span>
+            <div class="svc-foot">
+              <p class="price"><b data-price="pet">$20</b><span>/ day</span></p>
+              <a class="btn btn-soft btn-small" href="#book" data-pick="pet" aria-label="Choose Pet Care Add-on">Choose</a>
+            </div>
+          </div>
+        </article>
+      </div>
+      <p class="svc-more reveal">Not sure which fits? <a href="#faq">Read the FAQ</a> or <a href="sms:+19165550123" data-sms>text Sissy</a>.</p>
+    </div>
+  </section>
+
+  <!-- ==================== WHAT'S INCLUDED ==================== -->
+  <section class="sec sun" id="included" aria-labelledby="inc-title">
+    <div class="wrap split">
+      <figure class="photo reveal">
+        <img src="img/plants.jpg" width="900" height="1125" loading="lazy" alt="A bright corner full of healthy houseplants on shelves and stools">
+        <figcaption class="paper-note">Leave me a list! Thermostat at 72°F, back gate latched, ferns on Tuesdays.<small>♥ S.</small></figcaption>
+      </figure>
+      <div>
+        <div class="sec-head reveal" style="margin-bottom:0">
+          <span class="kicker">What's included</span>
+          <h2 id="inc-title">Everything at home, handled</h2>
+          <p>Every sit comes with the full house routine, so you can stop thinking about home the minute you leave.</p>
+        </div>
+        <ul class="checklist">
+          <li style="--i:0"><span class="tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span class="check-txt"><b>Locking up &amp; security checks</b><span>Doors, windows, gates and alarm, every visit.</span></span></li>
+          <li style="--i:1"><span class="tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span class="check-txt"><b>Mail &amp; package collection</b><span>Nothing left sitting on the porch.</span></span></li>
+          <li style="--i:2"><span class="tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span class="check-txt"><b>Plant &amp; garden watering</b><span>Houseplants, patio pots and garden beds.</span></span></li>
+          <li style="--i:3"><span class="tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span class="check-txt"><b>Trash &amp; recycling days</b><span>Bins out to the curb and back in on time.</span></span></li>
+          <li style="--i:4"><span class="tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span class="check-txt"><b>Light rotation</b><span>Lamps and blinds changed daily so the home looks lived-in.</span></span></li>
+          <li style="--i:5"><span class="tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span class="check-txt"><b>Light tidying</b><span>Dishes done and rooms left the way you like them.</span></span></li>
+          <li style="--i:6"><span class="tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span class="check-txt"><b>Checking for leaks or issues</b><span>Sinks, water heater, AC and anything unusual.</span></span></li>
+          <li style="--i:7"><span class="tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span class="check-txt"><b>Pet care when needed</b><span>Meals, walks, litter, cuddles and meds.</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== A TYPICAL DAY ==================== -->
+  <section class="sec alt" id="day" aria-labelledby="day-title">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="kicker">How it works</span>
+        <h2 id="day-title">A typical day at your place</h2>
+        <p>Here's what a day of an overnight house sit looks like, with the little updates you'll get along the way.</p>
+      </div>
+      <div class="tl">
+      <span class="tl-track" aria-hidden="true"><span class="tl-fill"></span></span>
+      <ol class="tl-list">
+        <li class="tl-step">
+          <span class="tl-time">7:30 am</span>
+          <span class="tl-dot" aria-hidden="true"><svg class="ic"><use href="#i-sun"/></svg></span>
+          <div class="tl-body"><h3>Morning walkthrough</h3><p>A calm look through every room, door and window to make sure all is well after the night.</p></div>
+        </li>
+        <li class="tl-step">
+          <span class="tl-time">8:00 am</span>
+          <span class="tl-dot" aria-hidden="true"><svg class="ic"><use href="#i-blinds"/></svg></span>
+          <div class="tl-body"><h3>Blinds up, pets cared for</h3><p>Curtains open, breakfast served, fresh water, then a walk or some playtime.</p></div>
+          <div class="msg"><p class="msg-meta">Sissy <span>8:06 AM</span></p><div class="bubble"><img src="img/petcare.jpg" width="800" height="600" loading="lazy" alt="Photo update of a dog napping on the couch">Good morning! Blinds are up and Bella had her breakfast 🐶</div></div>
+        </li>
+        <li class="tl-step">
+          <span class="tl-time">11:00 am</span>
+          <span class="tl-dot" aria-hidden="true"><svg class="ic"><use href="#i-mail"/></svg></span>
+          <div class="tl-body"><h3>Mail and packages</h3><p>Mail sorted on your counter and deliveries brought straight inside, away from porch pirates.</p></div>
+          <div class="msg"><p class="msg-meta">Sissy <span>11:14 AM</span></p><div class="bubble">Package brought inside and plants watered 🌿</div></div>
+        </li>
+        <li class="tl-step">
+          <span class="tl-time">11:30 am</span>
+          <span class="tl-dot" aria-hidden="true"><svg class="ic"><use href="#i-plant"/></svg></span>
+          <div class="tl-body"><h3>Plants and garden</h3><p>Houseplants, patio pots and garden beds watered the way you showed her, even in July heat.</p></div>
+        </li>
+        <li class="tl-step">
+          <span class="tl-time">3:00 pm</span>
+          <span class="tl-dot" aria-hidden="true"><svg class="ic"><use href="#i-shield"/></svg></span>
+          <div class="tl-body"><h3>Afternoon security check</h3><p>Doors, gates and windows checked again, plus a look around for leaks or anything unusual.</p></div>
+          <div class="msg"><p class="msg-meta">Sissy <span>3:08 PM</span></p><div class="bubble">Afternoon check done. All quiet and the back gate is latched ✅</div></div>
+        </li>
+        <li class="tl-step">
+          <span class="tl-time">7:30 pm</span>
+          <span class="tl-dot" aria-hidden="true"><svg class="ic"><use href="#i-bulb"/></svg></span>
+          <div class="tl-body"><h3>Evening lights on, doors locked</h3><p>Porch light and lamps on, blinds down and every door locked.</p></div>
+          <div class="msg"><p class="msg-meta">Sissy <span>7:41 PM</span></p><div class="bubble">Everything's locked up for the night. Bella says hi 🐶</div></div>
+        </li>
+        <li class="tl-step">
+          <span class="tl-time">10:00 pm</span>
+          <span class="tl-dot" aria-hidden="true"><svg class="ic"><use href="#i-moon"/></svg></span>
+          <div class="tl-body"><h3>A calm night at home</h3><p>Sissy stays over, so your home is never empty and your pets have company all night.</p></div>
+        </li>
+      </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MEET SISSY ==================== -->
+  <section class="sec" id="about" aria-labelledby="about-title">
+    <div class="wrap split">
+      <figure class="about-media reveal">
+        <!-- Swap in a photo of Sissy (e.g. img/sissy.jpg) and replace the monogram below with it -->
+        <img src="img/home.jpg" width="900" height="1125" loading="lazy" alt="A sunny living room with a teal sofa and lots of houseplants">
+        <figcaption class="id-card"><span class="av" aria-hidden="true">S</span><span><b>Sissy</b><span>House &amp; pet sitter · Sacramento</span></span></figcaption>
+      </figure>
+      <div>
+        <div class="sec-head reveal" style="margin-bottom:0">
+          <span class="kicker">Meet Sissy</span>
+          <h2 id="about-title">Hi, I'm Sissy. I'll look after your home like it's my own.</h2>
+        </div>
+        <blockquote class="letter reveal">
+          <p>I've always been the neighbor people call when they go out of town. Now it's my job, and I still treat it the same way: your home stays the way you left it, your pets keep their routines, and you get to actually enjoy your trip. I'd love to meet you and your crew.</p>
+          <span class="sig">— Sissy</span>
+        </blockquote>
+        <ul class="trust-list reveal">
+          <li><span class="ic-box"><svg class="ic"><use href="#i-home"/></svg></span><span><b>Respect for your home</b><span>Nothing moved, nothing borrowed, everything put back.</span></span></li>
+          <li><span class="ic-box"><svg class="ic"><use href="#i-list"/></svg></span><span><b>Your rules and routines</b><span>Walk routes, feeding times, thermostat settings and house rules, followed exactly.</span></span></li>
+          <li><span class="ic-box"><svg class="ic"><use href="#i-heart"/></svg></span><span><b>Free meet &amp; greet</b><span>A home walkthrough before your first booking, so nothing is a surprise.</span></span></li>
+          <li><span class="ic-box"><svg class="ic"><use href="#i-key"/></svg></span><span><b>Secure keys and lockboxes</b><span>Keys are never labeled with your address, and codes are never shared.</span></span></li>
+          <li><span class="ic-box"><svg class="ic"><use href="#i-camera"/></svg></span><span><b>Daily updates</b><span>Photos and a quick note every day, by text or email.</span></span></li>
+          <li><span class="ic-box"><svg class="ic"><use href="#i-aid"/></svg></span><span><b>A plan for emergencies</b><span>Your vet, the nearest 24-hour animal hospital and your trusted plumber, all on file before you leave.</span></span></li>
+        </ul>
+        <!-- Add more badges here only when true: [years] years of experience, Background-checked, References available, Pet first aid certified -->
+        <div class="badges reveal">
+          <span class="pill gold"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg>Insured &amp; bonded</span>
+          <span class="pill"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg>Free meet &amp; greet</span>
+          <span class="pill"><svg class="ic" aria-hidden="true"><use href="#i-camera"/></svg>Daily photo updates</span>
+          <span class="pill"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Sacramento local</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== REVIEWS ==================== -->
+  <section class="sec alt" id="reviews" aria-labelledby="rev-title">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="kicker">Reviews</span>
+        <h2 id="rev-title">Happy homes, happy pets</h2>
+        <span class="ph-note">Sample reviews: replace these with real ones from Sissy's clients</span>
+      </div>
+      <div class="reviews">
+        <figure class="review reveal" style="margin:0">
+          <span class="ph-tag">Sample review</span>
+          <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+          <blockquote>"We came back from two weeks in Maui to watered tomatoes, a neat stack of mail and a very relaxed cat. Pearl barely noticed we were gone."</blockquote>
+          <figcaption class="reviewer"><img src="img/review-cat.jpg" width="320" height="320" loading="lazy" alt="A cat sitting on a sunny windowsill"><span><b>Rachel M.</b><span>Land Park · cat, Pearl</span></span></figcaption>
+        </figure>
+        <figure class="review reveal" style="margin:0">
+          <span class="ph-tag">Sample review</span>
+          <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+          <blockquote>"Sissy stayed overnight during our week in Tahoe. The house looked lived-in, the porch light was on every night and she texted a photo every evening."</blockquote>
+          <figcaption class="reviewer"><img src="img/review-house.jpg" width="320" height="320" loading="lazy" alt="A white house with blue shutters and a front porch"><span><b>David &amp; Priya K.</b><span>East Sacramento · home only</span></span></figcaption>
+        </figure>
+        <figure class="review reveal" style="margin:0">
+          <span class="ph-tag">Sample review</span>
+          <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+          <blockquote>"Our rescue is nervous with strangers, but after the meet &amp; greet he was waiting at the door for her. Walks, meds on time and zero stress for us."</blockquote>
+          <figcaption class="reviewer"><img src="img/review-dog.jpg" width="320" height="320" loading="lazy" alt="A dog curled up on a leather armchair"><span><b>Marcus T.</b><span>Midtown · dog, Moose</span></span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BOOKING ==================== -->
+  <section class="sec" id="book" aria-labelledby="book-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Book a sitter</span>
+        <h2 id="book-title">Request your dates</h2>
+        <p>Choose your dates and what you need. Sissy will text you to confirm and set up a free meet &amp; greet. Nothing is charged here.</p>
+      </div>
+
+      <div class="book-grid" id="book-grid">
+        <!-- To receive requests by email/text, set CONFIG.endpoint (e.g. https://formspree.io/f/yourid) in the script below.
+             Field names are flat so Formspree, Netlify Forms or a Zapier webhook can read them as-is. -->
+        <form class="book-form" id="booking" method="POST" action="" novalidate>
+          <fieldset class="step">
+            <legend><span class="step-n">1</span>Your dates</legend>
+            <div class="row2">
+              <div class="field"><label for="bk-in">Start date</label><input type="date" id="bk-in" name="start_date" required></div>
+              <div class="field"><label for="bk-out">End date</label><input type="date" id="bk-out" name="end_date" required></div>
+            </div>
+            <p class="note-sm" id="bk-nights" aria-live="polite"></p>
+          </fieldset>
+
+          <fieldset class="step">
+            <legend><span class="step-n">2</span>Choose a service</legend>
+            <div class="opt-grid">
+              <label class="opt"><input type="radio" name="service" value="overnight" id="sv-overnight" checked><span class="mark"></span><span class="o-tag">Most popular</span><span class="o-title">Overnight sitting</span><span class="o-price"><span data-price="overnight">$85</span> / night</span><span class="o-sub">Sissy stays over. Pet care included.</span></label>
+              <label class="opt"><input type="radio" name="service" value="visits" id="sv-visits"><span class="mark"></span><span class="o-title">Daily check-ins</span><span class="o-price"><span data-price="visit">$30</span> / visit</span><span class="o-sub">One or two visits a day.</span></label>
+              <label class="opt"><input type="radio" name="service" value="extended" id="sv-extended"><span class="mark"></span><span class="o-title">Extended stay</span><span class="o-price">From <span data-price="extended">$70</span> / night</span><span class="o-sub">Lower nightly rate from 7 nights.</span></label>
+            </div>
+            <div class="field" id="vpd-field" hidden>
+              <label for="bk-vpd">Visits per day</label>
+              <select id="bk-vpd" name="visits_per_day"><option value="1">1 visit a day</option><option value="2" selected>2 visits a day (morning and evening)</option></select>
+            </div>
+          </fieldset>
+
+          <fieldset class="step">
+            <legend><span class="step-n">3</span>Add extras</legend>
+            <div class="extras">
+              <label class="opt row"><input type="checkbox" name="extras" value="Pet care" id="ex-pet" checked><span class="mark"></span><span class="o-main"><span class="o-title">Pet care</span><span class="o-sub">Meals, fresh water, walks, litter, playtime and meds</span></span><span class="o-price" id="ex-pet-price">Included</span></label>
+              <label class="opt row"><input type="checkbox" name="extras" value="Garden & yard watering" id="ex-garden"><span class="mark"></span><span class="o-main"><span class="o-title">Garden &amp; yard watering</span><span class="o-sub">Beds, pots and lawn by hand or hose</span></span><span class="o-price">+$10 / day</span></label>
+              <label class="opt row"><input type="checkbox" name="extras" value="Extra midday pet visit" id="ex-midday"><span class="mark"></span><span class="o-main"><span class="o-title">Extra midday pet visit</span><span class="o-sub" id="ex-midday-sub">A lunchtime walk or potty break</span></span><span class="o-price">+$20 / day</span></label>
+              <label class="opt row"><input type="checkbox" name="extras" value="Fresh-home clean" id="ex-tidy"><span class="mark"></span><span class="o-main"><span class="o-title">Fresh-home clean</span><span class="o-sub">Kitchen, floors and fresh sheets before you get back</span></span><span class="o-price">+$45 once</span></label>
+              <label class="opt row"><input type="checkbox" name="extras" value="Welcome-home groceries" id="ex-groceries"><span class="mark"></span><span class="o-main"><span class="o-title">Welcome-home groceries</span><span class="o-sub">Milk, bread and essentials in the fridge (plus grocery cost)</span></span><span class="o-price">+$25 once</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="step">
+            <legend><span class="step-n">4</span>About your home</legend>
+            <div class="row2 stack">
+              <div class="field"><label for="bk-zip">ZIP code or neighborhood</label><input id="bk-zip" name="zip_or_neighborhood" required placeholder="95819 or East Sacramento" autocomplete="postal-code"></div>
+              <div class="field"><label for="bk-home">Type of home</label><select id="bk-home" name="home_type"><option>Single-family house</option><option>Townhouse</option><option>Condo or apartment</option><option>Duplex</option><option>Other</option></select></div>
+            </div>
+            <div class="field"><label for="bk-entry">How will Sissy get in?</label><select id="bk-entry" name="entry_method"><option>Hand keys over at the meet &amp; greet</option><option>Lockbox</option><option>Smart lock or door code</option><option>Not sure yet</option></select></div>
+            <div class="field"><label for="bk-notes">Special instructions</label><textarea id="bk-notes" name="home_instructions" rows="3" placeholder="Alarm, thermostat, trash day, plants that need extra water, rooms that are off-limits…"></textarea></div>
+          </fieldset>
+
+          <fieldset class="step">
+            <legend><span class="step-n">5</span>Your pets</legend>
+            <div class="seg" role="radiogroup" aria-label="Do you have pets?">
+              <label><input type="radio" name="has_pets" value="yes" id="bk-pets-yes" checked>I have pets</label>
+              <label><input type="radio" name="has_pets" value="no" id="bk-pets-no">No pets</label>
+            </div>
+            <div id="pets-box" class="pets-list">
+              <div id="pets-list" class="pets-list"></div>
+              <button type="button" class="add-pet" id="add-pet"><svg class="ic" style="width:18px;height:18px" aria-hidden="true"><use href="#i-plus"/></svg>Add another pet</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="step">
+            <legend><span class="step-n">6</span>Your details</legend>
+            <div class="field"><label for="bk-name">Your name</label><input id="bk-name" name="name" required autocomplete="name" placeholder="Jordan Lee"></div>
+            <div class="row2 stack">
+              <div class="field"><label for="bk-phone">Mobile number</label><input id="bk-phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="(916) 555-0199"></div>
+              <div class="field"><label for="bk-email">Email</label><input id="bk-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"></div>
+            </div>
+            <div class="field">
+              <span class="lbl" id="pref-lbl">Best way to reach you</span>
+              <div class="seg" role="radiogroup" aria-labelledby="pref-lbl">
+                <label><input type="radio" name="contact_preference" value="Text" id="pref-text" checked>Text</label>
+                <label><input type="radio" name="contact_preference" value="Call" id="pref-call">Call</label>
+                <label><input type="radio" name="contact_preference" value="Email" id="pref-email">Email</label>
+              </div>
+            </div>
+            <label class="opt row"><input type="checkbox" name="meet_and_greet" value="yes" id="bk-meet" checked><span class="mark"></span><span class="o-main"><span class="o-title">Yes, I'd like a free meet &amp; greet first</span><span class="o-sub">About 30 minutes at your home to walk through routines and house rules</span></span></label>
+          </fieldset>
+
+          <input type="hidden" name="estimated_total" id="bk-estimate">
+          <input type="hidden" name="summary" id="bk-summary-text">
+          <div class="submit-row">
+            <button type="submit" class="btn btn-primary btn-lg" id="bk-submit">Request booking <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            <p class="note-sm">You won't be charged. Sissy confirms by text first.</p>
+          </div>
+          <p class="form-error" id="bk-error" role="alert" hidden></p>
+        </form>
+
+        <aside class="summary" aria-label="Price summary">
+          <div class="sum-head">
+            <img src="img/overnight.jpg" width="800" height="600" alt="" loading="lazy">
+            <div><h3 id="sum-service">Overnight house sitting</h3><p id="sum-dates">Choose your dates</p></div>
+          </div>
+          <ul class="sum-lines" id="sum-lines" aria-live="polite"></ul>
+          <p class="sum-warn" id="sum-warn" hidden></p>
+          <div class="sum-total"><span>Estimated total</span><b id="sum-total">$0</b></div>
+          <p class="note-sm" id="sum-pets"></p>
+          <p class="note-sm">No payment now. After Sissy confirms, pay by:</p>
+          <div class="pay"><span>Venmo</span><span>Zelle</span><span>Cash App</span><span>Card</span></div>
+          <button type="submit" form="booking" class="btn btn-primary">Request booking</button>
+        </aside>
+      </div>
+
+      <div class="confirm" id="bk-confirm" hidden tabindex="-1">
+        <div class="confirm-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
+        <h3>Request sent. Thanks, <span id="cf-name">friend</span>!</h3>
+        <p>Sissy will text you at <b id="cf-phone"></b> to confirm your dates and set up a free meet &amp; greet at your home.</p>
+        <dl class="recap" id="cf-recap"></dl>
+        <p class="note-sm">No payment has been taken. You'll pay after your sit is confirmed, by Venmo, Zelle, Cash App or card.</p>
+        <p class="note-sm demo-note" id="cf-demo">Demo: this form isn't connected yet, so nothing was actually sent.</p>
+        <div class="ctas"><button type="button" class="btn btn-ghost" id="cf-edit">Edit request</button><a class="btn btn-primary" href="sms:+19165550123" data-sms><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Text Sissy now</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="sec alt" id="faq" aria-labelledby="faq-title">
+    <div class="wrap faq-grid">
+      <div class="faq-side">
+        <div class="sec-head reveal">
+          <span class="kicker">FAQ</span>
+          <h2 id="faq-title">Good questions, honest answers</h2>
+        </div>
+        <div class="ask-card reveal">
+          <h3>Still wondering about something?</h3>
+          <p>Text Sissy any time. She usually replies within a few hours.</p>
+          <a class="btn btn-ghost" href="sms:+19165550123" data-sms><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Text Sissy <span class="num" data-phone-text>(916) 555-0123</span></a>
+        </div>
+      </div>
+      <div class="faq reveal">
+        <details><summary>Do you stay overnight or just visit?<span class="pm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary><div class="ans"><p>Both. With overnight sitting, Sissy sleeps at your home so it's lived-in day and night. With daily check-ins, she comes by once or twice a day. Extended stays are overnight sits of 7 nights or more at a lower rate.</p></div></details>
+        <details><summary>How do you get into my home?<span class="pm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary><div class="ans"><p>Whatever you're most comfortable with: keys handed over at the meet &amp; greet, a lockbox, or a smart lock code. Keys are never labeled with your address and codes are never shared. Keys go back to you, or stay in the lockbox, when the sit ends.</p></div></details>
+        <details><summary>Do you do a meet &amp; greet first?<span class="pm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary><div class="ans"><p>Always, and it's free. Sissy comes by for about 30 minutes before your first booking to meet your pets, learn the routines and walk through the house: alarm, thermostat, water shut-off and anything else that matters.</p></div></details>
+        <details><summary>What do you do if something goes wrong at the house?<span class="pm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary><div class="ans"><p>You'll agree on a plan before you leave, with your emergency contacts, preferred plumber or handyman, your vet and the nearest 24-hour animal hospital. If something happens, Sissy handles the urgent part first (like shutting off the water or getting your pet to the vet) and contacts you right away.</p></div></details>
+        <details><summary>Do you care for pets too?<span class="pm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary><div class="ans"><p>Yes. Dogs, cats, birds, small animals and fish are all welcome. Pet care is included with overnight and extended stays, and is a $20/day add-on with daily check-ins.</p></div></details>
+        <details><summary>How often will I get updates?<span class="pm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary><div class="ans"><p>At least once a day, with photos. Many clients like a morning and evening text. Just say how often you'd like to hear from her, and whether you prefer text or email.</p></div></details>
+        <details><summary>Are you insured?<span class="pm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary><div class="ans"><p>Yes. Sissy is insured and bonded, and can share proof of coverage at the meet &amp; greet.</p></div></details>
+        <details><summary>Can I leave a list of house rules?<span class="pm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary><div class="ans"><p>Please do. Shoes off, thermostat settings, rooms that are off-limits, which plants need extra water: write it all down and Sissy will follow it.</p></div></details>
+        <details><summary>How do I pay?<span class="pm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary><div class="ans"><p>Nothing is charged when you request a booking. Once your sit is confirmed, you'll get a simple invoice by text or email and can pay with Venmo, Zelle, Cash App or card.</p></div></details>
+        <!-- Placeholder policy: replace with Sissy's real cancellation policy -->
+        <details><summary>What's your cancellation policy?<span class="pm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary><div class="ans"><p>Cancel for free up to 7 days before your start date. Within 7 days, the first night (or first day of visits) is charged. Holiday bookings need 14 days' notice.</p></div></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="foot" id="contact">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div>
+        <h2>Going away soon?</h2>
+        <p>Tell Sissy your dates and she'll keep everything at home just the way you like it.</p>
+      </div>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#book">Book a sitter <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="sms:+19165550123" data-sms><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Text Sissy</a>
+      </div>
+    </div>
+
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top" aria-label="Sitting with Sissy, back to top">
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M6 22 L24 7 L42 22 V40 a4 4 0 0 1 -4 4 H10 a4 4 0 0 1 -4 -4 Z" fill="var(--butter)"/>
+            <path d="M3 23 L24 5.5 L45 23" fill="none" stroke="var(--fg)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="18.5" cy="25" r="2.6" fill="var(--butter-ink)"/><circle cx="24" cy="22.5" r="2.6" fill="var(--butter-ink)"/><circle cx="29.5" cy="25" r="2.6" fill="var(--butter-ink)"/>
+            <path d="M24 28.5c-4.5 0-7 4.2-7 6.6 0 2.4 2.2 3 3.6 3 1.4 0 2-.8 3.4-.8s2 .8 3.4.8c1.4 0 3.6-.6 3.6-3 0-2.4-2.5-6.6-7-6.6Z" fill="var(--butter-ink)"/>
+          </svg>
+          <span class="brand-text"><small>Sitting with</small><b>Sissy</b></span>
+        </a>
+        <p>In-home house sitting and pet care in Sacramento, CA. Your pets stay home. You travel worry-free.</p>
+      </div>
+      <nav aria-label="Footer">
+        <h4>Quick links</h4>
+        <ul>
+          <li><a href="#services">Services &amp; pricing</a></li>
+          <li><a href="#included">What's included</a></li>
+          <li><a href="#day">How it works</a></li>
+          <li><a href="#about">Meet Sissy</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#book">Book a sitter</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h4>Service area</h4>
+        <!-- Placeholder areas: replace with the neighborhoods Sissy actually covers -->
+        <ul class="areas">
+          <li>East Sacramento</li><li>Land Park</li><li>Midtown</li><li>Curtis Park</li><li>Natomas</li><li>Arden-Arcade</li><li>Carmichael</li><li>Elk Grove</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href="sms:+19165550123" data-sms><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Text <span data-phone-text>(916) 555-0123</span></a></li>
+          <li><a href="tel:+19165550123" data-tel><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>Call <span data-phone-text>(916) 555-0123</span></a></li>
+          <li><a href="mailto:hello@sittingwithsissy.com" data-mailto><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg><span data-email-text>hello@sittingwithsissy.com</span></a></li>
+          <!-- Placeholder social links: replace # with Sissy's profiles -->
+          <li><a href="#" data-social="instagram"><svg class="ic" aria-hidden="true"><use href="#i-ig"/></svg>Instagram</a></li>
+          <li><a href="#" data-social="facebook"><svg class="ic" aria-hidden="true"><use href="#i-fb"/></svg>Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Sitting with Sissy · Sacramento, California</span>
+      <span>Photos from Unsplash</span>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="sticky-cta">
+  <button type="button" class="btn btn-primary" id="sticky-main"><span id="sticky-label">Book a sitter</span></button>
+  <a class="round" href="sms:+19165550123" data-sms aria-label="Text Sissy"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg></a>
+</div>
+
+<dialog class="text-dlg" id="text-dlg" aria-labelledby="td-title">
+  <form method="dialog"><button class="td-close" aria-label="Close">×</button></form>
+  <div class="av" aria-hidden="true">S</div>
+  <h3 id="td-title">Text Sissy</h3>
+  <p class="note-sm">Send your dates and a little about your home and pets to</p>
+  <p class="td-num" id="td-num" data-phone-text>(916) 555-0123</p>
+  <div class="td-actions">
+    <a class="btn btn-primary" href="sms:+19165550123" data-sms><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Open Messages</a>
+    <button type="button" class="btn btn-ghost" id="td-copy">Copy number</button>
+    <a class="btn btn-soft" href="tel:+19165550123" data-tel><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>Call instead</a>
+  </div>
+  <p class="td-status" id="td-status" aria-live="polite"></p>
+</dialog>
+
+<template id="pet-tpl">
+  <div class="pet">
+    <div class="pet-head"><b><svg class="ic" style="width:18px;height:18px" aria-hidden="true"><use href="#i-paw"/></svg><span class="pet-title">Pet 1</span></b><button type="button" class="link-btn pet-remove">Remove</button></div>
+    <div class="row2">
+      <div class="field"><label data-f="name">Name</label><input data-f="name" type="text" placeholder="Bella" autocomplete="off"></div>
+      <div class="field"><label data-f="type">Type</label><select data-f="type"><option>Dog</option><option>Cat</option><option>Bird</option><option>Small animal</option><option>Fish</option><option>Reptile</option><option>Other</option></select></div>
+    </div>
+    <div class="field"><label data-f="feeding">Feeding routine</label><textarea data-f="feeding" rows="2" placeholder="1 cup dry food at 7 am and 6 pm"></textarea></div>
+    <div class="row2 stack">
+      <div class="field"><label data-f="meds">Medications</label><input data-f="meds" type="text" placeholder="None, or name and dose"></div>
+      <div class="field"><label data-f="notes">Notes</label><input data-f="notes" type="text" placeholder="Shy at first, loves belly rubs"></div>
+    </div>
+  </div>
+</template>
+
+<script>
+(() => {
+  const menuBtn = document.getElementById('menu-btn');
+  const links = document.getElementById('nav-links');
+  menuBtn.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+
+  const svg = document.getElementById('scene');
+  const $ = id => document.getElementById(id);
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const rand = (a, b) => a + Math.random() * (b - a);
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+
+  const mkPet = (name, hx, hy, k, c) => ({
+    name, hx, hy, k, c,
+    x: 0, y: 0, vx: 0, vy: 0,          // look direction (-1..1)
+    tilt: 0, vt: 0, tiltTgt: 0, tiltUntil: 0,
+    wander: { x: 0, y: .1, next: 0 },
+    blink: null, nextBlink: performance.now() + rand(800, 2500),
+    nextIdle: performance.now() + rand(1500, 4000),
+    earL: null, earR: null, tail: null, bounce: null, happyUntil: 0,
+    el: {
+      head: $(name + '-head'), face: $(name + '-face'), body: $(name + '-body'),
+      earL: $(name + '-earL'), earR: $(name + '-earR'),
+      eyeL: $(name + '-eyeL'), eyeR: $(name + '-eyeR'),
+      pupL: $(name + '-pupilL'), pupR: $(name + '-pupilR'),
+    }
+  });
+  const dog = mkPet('dog', 222, 412, 46, 11.5);
+  const cat = mkPet('cat', 402, 428, 20, 8.2);
+  dog.eyes = [[-27, -10], [27, -10]];
+  cat.eyes = [[-29, -8], [29, -8]];
+  dog.earPivot = [[-50, -58], [50, -58]];
+  cat.earPivot = [[-46, -60], [46, -60]];
+  const pets = [dog, cat];
+
+  // pointer state
+  let cursor = null, lastMove = -1e9, focus = null, focusUntil = 0;
+
+  // scroll: pets glance down at the content, and the puppy waves bye / hello
+  let lastScroll = -1e9, away = false, wave = null, sceneVisible = true;
+  function startWave(now) {
+    if (reduce) return;
+    wave = { t0: now, dur: 1500 };
+    dog.happyUntil = now + 900;
+    cat.nextBlink = 0;
+  }
+  window.addEventListener('scroll', () => {
+    lastScroll = performance.now();
+    const y = window.scrollY;
+    if (!away && y > 260) { away = true; startWave(lastScroll); }
+    else if (away && y < 40) { away = false; startWave(lastScroll); }
+  }, { passive: true });
+  if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => { sceneVisible = e.isIntersecting; }).observe(svg);
+  const toSVG = (cx, cy) => {
+    const m = svg.getScreenCTM(); if (!m) return null;
+    const p = svg.createSVGPoint(); p.x = cx; p.y = cy;
+    return p.matrixTransform(m.inverse());
+  };
+  window.addEventListener('pointermove', e => {
+    if (e.pointerType === 'touch') return;
+    cursor = toSVG(e.clientX, e.clientY); lastMove = performance.now();
+  }, { passive: true });
+  document.addEventListener('pointerleave', () => { lastMove = -1e9; });
+  window.addEventListener('blur', () => { lastMove = -1e9; });
+
+  svg.addEventListener('pointerdown', e => {
+    const p = toSVG(e.clientX, e.clientY); if (!p) return;
+    const hit = e.target.closest('.pet-hit');
+    if (hit) {
+      react(hit.dataset.pet === 'dog' ? dog : cat, p);
+    } else {
+      focus = p; focusUntil = performance.now() + 2200;
+    }
+  });
+
+  function lookFrom(pet, p) {
+    const dx = p.x - pet.hx, dy = p.y - pet.hy;
+    return { x: clamp(dx / (Math.abs(dx) + 200) * 1.35, -1, 1), y: clamp(dy / (Math.abs(dy) + 170) * 1.35, -1, 1) };
+  }
+
+  function startBlink(pet, now, slow) {
+    pet.blink = slow
+      ? { t0: now, close: 420, hold: 650, open: 520, min: .12 }
+      : { t0: now, close: 85, hold: 50, open: 120, min: .05 };
+    const dbl = !slow && Math.random() < .22;
+    pet.nextBlink = now + (dbl ? 300 : (pet === dog ? rand(2200, 4800) : rand(3200, 6500)));
+  }
+  function blinkScale(pet, now) {
+    const b = pet.blink; if (!b) return 1;
+    const t = now - b.t0;
+    if (t < b.close) return 1 - (1 - b.min) * ease(t / b.close);
+    if (t < b.close + b.hold) return b.min;
+    if (t < b.close + b.hold + b.open) return b.min + (1 - b.min) * ease((t - b.close - b.hold) / b.open);
+    pet.blink = null; return 1;
+  }
+  // decaying wiggle used for ear twitches and tail flicks
+  const wiggle = (a, now) => {
+    if (!a) return 0;
+    const p = (now - a.t0) / a.dur; if (p >= 1) return 0;
+    return a.amp * Math.sin(p * Math.PI * a.n) * (1 - p);
+  };
+
+  // hearts
+  const heartsG = $('hearts');
+  const hearts = [];
+  function spawnHeart(x, y, color) {
+    const h = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    h.setAttribute('d', 'M0 6 C-6 1 -9 -2 -9 -5 a4.5 4.5 0 0 1 9 -1 a4.5 4.5 0 0 1 9 1 c0 3 -3 6 -9 11 Z');
+    h.setAttribute('fill', color);
+    heartsG.appendChild(h);
+    hearts.push({ h, x, y, t0: performance.now(), dx: rand(-14, 14), s: rand(.8, 1.2) });
+  }
+
+  function react(pet, p) {
+    const now = performance.now();
+    focus = p; focusUntil = now + 1600;
+    if (reduce) { startBlink(pet, now, pet === cat); return; }
+    if (pet === dog) {
+      pet.bounce = { t0: now, dur: 900 };
+      pet.happyUntil = now + 1500;
+      pet.earL = { t0: now, dur: 700, amp: 12, n: 5 };
+      pet.earR = { t0: now + 60, dur: 700, amp: -12, n: 5 };
+      pet.tiltTgt = rand(-8, 8); pet.tiltUntil = now + 1100;
+      for (let i = 0; i < 3; i++) setTimeout(() => spawnHeart(dog.hx + rand(-30, 30), dog.hy - 90, '#F2A7AF'), i * 140);
+    } else {
+      startBlink(pet, now, true);
+      pet.happyUntil = now + 1900;
+      pet.tiltTgt = 9; pet.tiltUntil = now + 1600;
+      pet.earR = { t0: now + 250, dur: 420, amp: 14, n: 4 };
+      for (let i = 0; i < 2; i++) setTimeout(() => spawnHeart(cat.hx + rand(-26, 26), cat.hy - 95, '#F7D46A'), i * 220);
+    }
+  }
+
+  function idleAction(pet, now) {
+    pet.nextIdle = now + rand(2600, 6000);
+    if (reduce) return;
+    const r = Math.random();
+    if (pet === dog) {
+      if (r < .35) { pet.tiltTgt = (Math.random() < .5 ? -1 : 1) * rand(7, 11); pet.tiltUntil = now + rand(900, 1500); }
+      else if (r < .75) { const side = Math.random() < .5 ? 'earL' : 'earR'; pet[side] = { t0: now, dur: 380, amp: (side === 'earL' ? 9 : -9), n: 4 }; }
+      else { pet.earL = { t0: now, dur: 500, amp: -6, n: 1 }; pet.earR = { t0: now, dur: 500, amp: 6, n: 1 }; }
+    } else {
+      if (r < .3) startBlink(pet, now, true);
+      else if (r < .8) { const side = Math.random() < .5 ? 'earL' : 'earR'; pet[side] = { t0: now, dur: 300, amp: (side === 'earL' ? -10 : 10), n: 4 }; }
+      else { pet.tiltTgt = -6; pet.tiltUntil = now + 1400; }
+    }
+  }
+
+  function pickWander(pet, now) {
+    const other = pet === dog ? cat : dog;
+    const r = Math.random();
+    if (reduce) { pet.wander = { x: 0, y: .05, next: now + 4000 }; return; }
+    if (r < .2) pet.wander = { ...lookFrom(pet, { x: other.hx, y: other.hy - 10 }), next: 0 };
+    else if (r < .45) pet.wander = { x: rand(-.12, .12), y: rand(0, .15), next: 0 };
+    else pet.wander = { x: rand(-.9, .9), y: rand(-.55, .45), next: 0 };
+    pet.wander.next = now + rand(1400, 3800);
+  }
+
+  const T = (el, s) => el && el.setAttribute('transform', s);
+  let last = performance.now();
+
+  function frame(now) {
+    if (!sceneVisible) { last = now; requestAnimationFrame(frame); return; }
+    const dt = Math.min(.033, (now - last) / 1000); last = now;
+    const cursorLive = cursor && now - lastMove < 2600;
+
+    for (const pet of pets) {
+      // target
+      let tg;
+      if (focus && now < focusUntil) tg = lookFrom(pet, focus);
+      else if (window.scrollY > 60 && now - lastScroll < 1500) tg = { x: pet === dog ? -.15 : -.35, y: 1 };
+      else if (cursorLive) tg = lookFrom(pet, cursor);
+      else { if (now > pet.wander.next) pickWander(pet, now); tg = pet.wander; }
+
+      pet.vx += (pet.k * (tg.x - pet.x) - pet.c * pet.vx) * dt; pet.x += pet.vx * dt;
+      pet.vy += (pet.k * (tg.y - pet.y) - pet.c * pet.vy) * dt; pet.y += pet.vy * dt;
+
+      if (now > pet.tiltUntil) pet.tiltTgt = 0;
+      pet.vt += (30 * (pet.tiltTgt - pet.tilt) - 9 * pet.vt) * dt; pet.tilt += pet.vt * dt;
+
+      if (now > pet.nextBlink && !pet.blink) startBlink(pet, now, pet === cat && Math.random() < .25);
+      if (now > pet.nextIdle) idleAction(pet, now);
+
+      const lx = pet.x, ly = pet.y;
+      const breathe = reduce ? 0 : Math.sin(now / (pet === dog ? 520 : 760)) * 1.3;
+      let bob = 0;
+      if (pet.bounce) {
+        const p = (now - pet.bounce.t0) / pet.bounce.dur;
+        if (p >= 1) pet.bounce = null; else bob = -Math.abs(Math.sin(p * Math.PI * 3)) * 9 * (1 - p);
+      }
+      const e = pet.el;
+      const headRot = lx * (pet === dog ? 6 : 4.5) + pet.tilt;
+      T(e.body, `translate(${lx * 2} ${breathe * .6 + bob * .4})`);
+      T(e.head, `translate(${lx * 7} ${ly * 5 + breathe + bob}) rotate(${headRot} 0 60)`);
+      T(e.face, `translate(${lx * 15} ${ly * 10})`);
+      if (pet === dog) {
+        T($('dog-muzzle'), `translate(${lx * 10} ${ly * 6})`);
+        T($('dog-nose'), `translate(${lx * 6} ${ly * 3})`);
+        $('dog-tongue').setAttribute('opacity', now < pet.happyUntil ? 1 : 0);
+      } else {
+        const happy = now < pet.happyUntil;
+        $('cat-mouth').setAttribute('opacity', happy ? 0 : 1);
+        $('cat-smile').setAttribute('opacity', happy ? 1 : 0);
+      }
+      const earSwing = -lx * 5 - pet.tilt * .3;
+      const [pl, pr] = pet.earPivot;
+      T(e.earL, `translate(${-lx * 3} 0) rotate(${earSwing + wiggle(pet.earL, now)} ${pl[0]} ${pl[1]})`);
+      T(e.earR, `translate(${-lx * 3} 0) rotate(${earSwing + wiggle(pet.earR, now)} ${pr[0]} ${pr[1]})`);
+      T(e.pupL, `translate(${lx * 6} ${ly * 6})`);
+      T(e.pupR, `translate(${lx * 6} ${ly * 6})`);
+      const s = blinkScale(pet, now);
+      pet.eyes.forEach(([cx, cy], i) => T(i ? e.eyeR : e.eyeL, `translate(${cx} ${cy}) scale(1 ${s}) translate(${-cx} ${-cy})`));
+    }
+
+    // puppy paw wave
+    let pawT = 'translate(0 0)';
+    if (wave) {
+      const p = (now - wave.t0) / wave.dur;
+      if (p >= 1) wave = null;
+      else {
+        const up = p < .18 ? ease(p / .18) : p > .82 ? 1 - ease((p - .82) / .18) : 1;
+        const ang = (p > .18 && p < .82) ? Math.sin((p - .18) / .64 * Math.PI * 4) * 16 : 0;
+        pawT = `translate(${up * 4} ${-up * 30}) rotate(${ang - up * 10} 258 521)`;
+      }
+    }
+    T($('dog-pawR'), pawT);
+
+    // hearts
+    for (let i = hearts.length - 1; i >= 0; i--) {
+      const h = hearts[i], p = (now - h.t0) / 1400;
+      if (p >= 1) { h.h.remove(); hearts.splice(i, 1); continue; }
+      h.h.setAttribute('transform', `translate(${h.x + h.dx * p + Math.sin(p * 6) * 3} ${h.y - 60 * ease(p)}) scale(${h.s * (0.6 + p * .5)})`);
+      h.h.setAttribute('opacity', p < .2 ? p * 5 : 1 - (p - .2) / .8);
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+
+<script>
+(() => {
+  /* ---------- Business details: edit these in one place ---------- */
+  const CONFIG = {
+    phone: '+19165550123',              // TODO: Sissy's real mobile number
+    phoneDisplay: '(916) 555-0123',
+    email: 'hello@sittingwithsissy.com', // TODO: Sissy's real email
+    instagram: '#',                      // TODO: Instagram profile URL
+    facebook: '#',                       // TODO: Facebook page URL
+    endpoint: '',                        // e.g. 'https://formspree.io/f/yourid' to receive booking requests
+    smsText: "Hi Sissy! I'd love to ask about house sitting while I'm away.",
+    prices: {                            // TODO: confirm Sissy's real rates (USD)
+      overnight: 85, visit: 30, extended7: 75, extended14: 70,
+      pet: 20, garden: 10, midday: 20, tidy: 45, groceries: 25
+    }
+  };
+  const P = CONFIG.prices;
+  const $ = id => document.getElementById(id);
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const money = n => '$' + n.toLocaleString('en-US');
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const smooth = reduce ? 'auto' : 'smooth';
+
+  /* ---------- Fill contact details and prices ---------- */
+  const sms = `sms:${CONFIG.phone}?&body=${encodeURIComponent(CONFIG.smsText)}`;
+  document.querySelectorAll('[data-sms]').forEach(a => a.href = sms);
+  document.querySelectorAll('[data-tel]').forEach(a => a.href = 'tel:' + CONFIG.phone);
+  document.querySelectorAll('[data-phone-text]').forEach(el => el.textContent = CONFIG.phoneDisplay);
+  document.querySelectorAll('[data-mailto]').forEach(a => a.href = 'mailto:' + CONFIG.email);
+  document.querySelectorAll('[data-email-text]').forEach(el => el.textContent = CONFIG.email);
+  document.querySelectorAll('[data-social]').forEach(a => {
+    const url = CONFIG[a.dataset.social];
+    if (!url || url === '#') a.closest('li').hidden = true; // hidden until a real profile URL is set
+    else { a.href = url; a.target = '_blank'; a.rel = 'noopener'; }
+  });
+  const priceOf = { overnight: P.overnight, visit: P.visit, extended: P.extended14, pet: P.pet };
+  document.querySelectorAll('[data-price]').forEach(el => { const v = priceOf[el.dataset.price]; if (v != null) el.textContent = money(v); });
+
+  // close mobile menu after choosing a link
+  const navLinks = $('nav-links');
+  navLinks.addEventListener('click', e => { if (e.target.closest('a')) { navLinks.classList.remove('open'); $('menu-btn').setAttribute('aria-expanded', 'false'); } });
+
+  /* ---------- Scroll reveals ---------- */
+  const root = document.documentElement;
+  const revealEls = document.querySelectorAll('.reveal, .svc, .checklist');
+  if (!reduce && 'IntersectionObserver' in window) {
+    root.classList.add('js-anim');
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -8% 0px', threshold: .15 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+
+  /* ---------- Timeline draws itself with scroll ---------- */
+  const tl = document.querySelector('.tl');
+  const fill = tl.querySelector('.tl-fill');
+  const steps = [...tl.querySelectorAll('.tl-step')];
+  if (root.classList.contains('js-anim')) {
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const r = tl.getBoundingClientRect();
+      const mark = innerHeight * .62;
+      fill.style.transform = `scaleY(${clamp((mark - r.top) / r.height, 0, 1)})`;
+      steps.forEach(s => {
+        const d = s.querySelector('.tl-dot').getBoundingClientRect();
+        if (d.top + d.height / 2 < mark) s.classList.add('in');
+      });
+    };
+    addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    addEventListener('resize', update);
+    update();
+  } else steps.forEach(s => s.classList.add('in'));
+
+  /* ---------- Booking ---------- */
+  const form = $('booking');
+  const bkIn = $('bk-in'), bkOut = $('bk-out');
+  const iso = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  const parse = v => { if (!v) return null; const [y, m, d] = v.split('-').map(Number); return new Date(y, m - 1, d); };
+  const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
+  const fmt = d => d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+
+  // example dates so the summary opens with a real price
+  bkIn.min = iso(today);
+  bkIn.value = iso(addDays(today, 14));
+  bkOut.value = iso(addDays(today, 19));
+  bkOut.min = iso(addDays(today, 15));
+
+  const nights = () => {
+    const a = parse(bkIn.value), b = parse(bkOut.value);
+    if (!a || !b) return 0;
+    return Math.max(0, Math.round((b - a) / 864e5));
+  };
+
+  // pets
+  const tpl = $('pet-tpl'), petsList = $('pets-list');
+  let petSeq = 0;
+  function renumberPets() {
+    const cards = [...petsList.children];
+    cards.forEach((c, i) => {
+      c.querySelector('.pet-title').textContent = `Pet ${i + 1}`;
+      c.querySelectorAll('input[data-f], select[data-f], textarea[data-f]').forEach(el => el.name = `pet${i + 1}_${el.dataset.f}`);
+      c.querySelector('.pet-remove').hidden = cards.length === 1;
+    });
+  }
+  function addPet(focus) {
+    const n = ++petSeq;
+    const node = tpl.content.firstElementChild.cloneNode(true);
+    node.querySelectorAll('input[data-f], select[data-f], textarea[data-f]').forEach(el => el.id = `pet-${n}-${el.dataset.f}`);
+    node.querySelectorAll('label[data-f]').forEach(l => l.htmlFor = `pet-${n}-${l.dataset.f}`);
+    node.querySelector('input[data-f="name"]').required = $('bk-pets-yes').checked;
+    node.querySelector('.pet-remove').addEventListener('click', () => { node.remove(); renumberPets(); update(); });
+    node.addEventListener('input', update);
+    petsList.appendChild(node);
+    renumberPets();
+    if (focus) node.querySelector('input').focus();
+  }
+  addPet(false);
+  $('add-pet').addEventListener('click', () => { addPet(true); update(); });
+
+  const hasPets = () => $('bk-pets-yes').checked;
+  let hadPets = true;
+  function syncPets() {
+    const yes = hasPets();
+    if (yes && !hadPets) $('ex-pet').checked = true;
+    hadPets = yes;
+    $('pets-box').hidden = !yes;
+    petsList.querySelectorAll('input[data-f="name"]').forEach(i => i.required = yes);
+    const pet = $('ex-pet'), mid = $('ex-midday');
+    pet.disabled = !yes; mid.disabled = !yes || service() === 'visits';
+    if (!yes) { pet.checked = false; mid.checked = false; }
+  }
+  const service = () => form.querySelector('input[name="service"]:checked').value;
+  const SERVICE_NAMES = { overnight: 'Overnight house sitting', visits: 'Daily home check-ins', extended: 'Extended stay' };
+
+  let total = 0;
+  function compute() {
+    const n = nights(), svc = service(), lines = [];
+    let warn = '';
+    if (n > 0) {
+      if (svc === 'overnight') lines.push([`${n} night${n > 1 ? 's' : ''} × ${money(P.overnight)}`, 'Overnight sitting', n * P.overnight]);
+      if (svc === 'extended') {
+        const rate = n >= 14 ? P.extended14 : n >= 7 ? P.extended7 : P.overnight;
+        if (n < 7) warn = `Extended rates start at 7 nights, so this uses the overnight rate. ${7 - n} more night${7 - n > 1 ? 's' : ''} brings it to ${money(P.extended7)}/night.`;
+        else if (n < 14) warn = `Stays of 14+ nights drop to ${money(P.extended14)}/night.`;
+        lines.push([`${n} nights × ${money(rate)}`, 'Extended stay', n * rate]);
+      }
+      if (svc === 'visits') {
+        const v = +$('bk-vpd').value;
+        lines.push([`${n} day${n > 1 ? 's' : ''} × ${v} visit${v > 1 ? 's' : ''} × ${money(P.visit)}`, 'Home check-ins', n * v * P.visit]);
+      }
+      if ($('ex-pet').checked) lines.push(svc === 'visits' ? [`${n} day${n > 1 ? 's' : ''} × ${money(P.pet)}`, 'Pet care', n * P.pet] : ['With overnight stays', 'Pet care', 'free']);
+      if ($('ex-garden').checked) lines.push([`${n} day${n > 1 ? 's' : ''} × ${money(P.garden)}`, 'Garden & yard watering', n * P.garden]);
+      if ($('ex-midday').checked) lines.push([`${n} day${n > 1 ? 's' : ''} × ${money(P.midday)}`, 'Midday pet visit', n * P.midday]);
+      if ($('ex-tidy').checked) lines.push(['One time', 'Fresh-home clean', P.tidy]);
+      if ($('ex-groceries').checked) lines.push(['Plus cost of groceries', 'Welcome-home groceries', P.groceries]);
+      if ($('bk-meet').checked) lines.push(['Before your first booking', 'Meet & greet', 'free']);
+    }
+    total = lines.reduce((s, l) => s + (typeof l[2] === 'number' ? l[2] : 0), 0);
+    return { n, svc, lines, warn };
+  }
+
+  function update() {
+    syncPets();
+    const svc = service();
+    $('vpd-field').hidden = svc !== 'visits';
+    $('ex-pet-price').textContent = svc === 'visits' ? `+${money(P.pet)} / day` : 'Included';
+    $('ex-midday-sub').textContent = svc === 'visits' ? 'Choose 2 visits a day instead' : 'A lunchtime walk or potty break';
+
+    const { n, lines, warn } = compute();
+    const a = parse(bkIn.value), b = parse(bkOut.value);
+    $('bk-nights').textContent = n > 0
+      ? `${n} ${svc === 'visits' ? `day${n > 1 ? 's' : ''} of visits` : `night${n > 1 ? 's' : ''}`} away · ${fmt(a)} to ${fmt(b)}`
+      : 'Choose an end date after your start date.';
+    $('sum-service').textContent = SERVICE_NAMES[svc];
+    $('sum-dates').textContent = n > 0 ? `${fmt(a)} – ${fmt(b)} · ${n} ${svc === 'visits' ? 'days' : n > 1 ? 'nights' : 'night'}` : 'Choose your dates';
+    const ul = $('sum-lines');
+    ul.replaceChildren(...lines.map(([detail, label, amt]) => {
+      const li = document.createElement('li');
+      const l = document.createElement('span'); l.textContent = label;
+      const sm = document.createElement('small'); sm.textContent = detail; l.appendChild(sm);
+      const r = document.createElement('span');
+      if (amt === 'free') { r.textContent = 'Free'; r.className = 'free'; } else r.textContent = money(amt);
+      li.append(l, r); return li;
+    }));
+    $('sum-warn').hidden = !warn; $('sum-warn').textContent = warn;
+    $('sum-total').textContent = n > 0 ? money(total) : '—';
+    const pets = petNames();
+    $('sum-pets').textContent = hasPets() ? (pets.length ? `Caring for ${pets.join(', ')}` : 'Add your pets so Sissy knows who she\'s meeting.') : 'House only, no pets.';
+    $('bk-estimate').value = n > 0 ? money(total) : '';
+    $('bk-summary-text').value = lines.map(([d, l, amt]) => `${l} (${d}): ${amt === 'free' ? 'Free' : money(amt)}`).join('\n');
+    renderSticky();
+  }
+  function petNames() {
+    return [...petsList.children].map(c => {
+      const nm = c.querySelector('input[data-f="name"]').value.trim();
+      const ty = c.querySelector('select[data-f="type"]').value.toLowerCase();
+      return nm ? `${nm} (${ty})` : '';
+    }).filter(Boolean);
+  }
+
+  bkIn.addEventListener('change', () => {
+    const a = parse(bkIn.value);
+    if (a) {
+      bkOut.min = iso(addDays(a, 1));
+      if (!parse(bkOut.value) || parse(bkOut.value) <= a) bkOut.value = iso(addDays(a, 1));
+    }
+  });
+  form.addEventListener('input', () => { bkOut.setCustomValidity(''); $('bk-error').hidden = true; update(); });
+  form.addEventListener('change', update);
+
+  // service buttons on cards preselect the booking form
+  document.querySelectorAll('[data-pick]').forEach(a => a.addEventListener('click', () => {
+    const v = a.dataset.pick;
+    if (v === 'pet') { $('bk-pets-yes').checked = true; syncPets(); $('ex-pet').checked = true; }
+    else { $('sv-' + v).checked = true; if (v === 'extended' && nights() < 7) bkOut.value = iso(addDays(parse(bkIn.value) || addDays(today, 14), 10)); }
+    update();
+  }));
+
+  // submit
+  const grid = $('book-grid'), confirmBox = $('bk-confirm');
+  let confirmed = false;
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (nights() < 1) bkOut.setCustomValidity('Choose an end date after your start date.');
+    if (!form.reportValidity()) return;
+    update();
+    const btn = $('bk-submit');
+    if (CONFIG.endpoint) {
+      btn.disabled = true;
+      try {
+        const res = await fetch(CONFIG.endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+        if (!res.ok) throw new Error(res.status);
+      } catch {
+        btn.disabled = false;
+        $('bk-error').textContent = `Your request didn't go through. Check your connection and try again, or text Sissy at ${CONFIG.phoneDisplay}.`;
+        $('bk-error').hidden = false;
+        return;
+      }
+      btn.disabled = false;
+    }
+    showConfirm();
+  });
+
+  function showConfirm() {
+    const { n, svc } = compute();
+    const name = $('bk-name').value.trim();
+    $('cf-name').textContent = name.split(/\s+/)[0] || 'friend';
+    $('cf-phone').textContent = $('bk-phone').value.trim();
+    const extras = [...form.querySelectorAll('input[name="extras"]:checked')].map(i => i.value);
+    const rows = [
+      ['Dates', `${fmt(parse(bkIn.value))} – ${fmt(parse(bkOut.value))} (${n} ${svc === 'visits' ? 'days' : n > 1 ? 'nights' : 'night'})`],
+      ['Service', SERVICE_NAMES[svc] + (svc === 'visits' ? `, ${$('bk-vpd').value} a day` : '')],
+      ['Extras', extras.length ? extras.join(', ') : 'None'],
+      ['Home', `${$('bk-home').value} in ${$('bk-zip').value.trim()}`],
+      ['Pets', hasPets() ? (petNames().join(', ') || 'Pets to be added') : 'No pets'],
+      ['Meet & greet', $('bk-meet').checked ? 'Requested (free)' : 'Not needed'],
+      ['Estimated total', money(total)]
+    ];
+    $('cf-recap').replaceChildren(...rows.flatMap(([k, v]) => {
+      const dt = document.createElement('dt'); dt.textContent = k;
+      const dd = document.createElement('dd'); dd.textContent = v;
+      return [dt, dd];
+    }));
+    $('cf-demo').hidden = !!CONFIG.endpoint;
+    grid.hidden = true; confirmBox.hidden = false; confirmed = true;
+    renderSticky();
+    $('book').scrollIntoView({ behavior: smooth, block: 'start' });
+    confirmBox.focus({ preventScroll: true });
+  }
+  $('cf-edit').addEventListener('click', () => {
+    confirmBox.hidden = true; grid.hidden = false; confirmed = false;
+    renderSticky();
+    $('book').scrollIntoView({ behavior: smooth, block: 'start' });
+  });
+
+  /* ---------- Sticky mobile CTA ---------- */
+  const sticky = $('sticky-cta'), stickyLabel = $('sticky-label');
+  let pastHero = false, inBook = false;
+  function renderSticky() {
+    const booking = inBook && !confirmed;
+    sticky.classList.toggle('show', pastHero && !(inBook && confirmed));
+    stickyLabel.textContent = booking && nights() > 0 ? `Request booking · ${money(total)}` : 'Book a sitter';
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting && e.boundingClientRect.top < 0; renderSticky(); })
+      .observe(document.querySelector('.hero .ctas'));
+    new IntersectionObserver(([e]) => { inBook = e.isIntersecting; renderSticky(); }, { rootMargin: '0px 0px -30% 0px' })
+      .observe($('book'));
+  }
+  $('sticky-main').addEventListener('click', () => {
+    if (inBook && !confirmed) form.requestSubmit();
+    else $('book').scrollIntoView({ behavior: smooth, block: 'start' });
+  });
+
+  /* ---------- Text Sissy panel ---------- */
+  // Every "Text Sissy" link opens a panel with the number, so visitors can text,
+  // copy or call even where the Messages app can't be opened (desktop, embedded views).
+  const dlg = $('text-dlg'), tdStatus = $('td-status');
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[data-sms]');
+    if (!a || a.closest('#text-dlg') || typeof dlg.showModal !== 'function') return;
+    e.preventDefault();
+    tdStatus.textContent = '';
+    dlg.showModal();
+  });
+  dlg.addEventListener('click', e => { // tap the dimmed backdrop (outside the panel) to close
+    if (e.target !== dlg) return;
+    const r = dlg.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dlg.close();
+  });
+  $('td-copy').addEventListener('click', () => {
+    const done = () => { tdStatus.textContent = 'Number copied'; };
+    const fallback = () => {
+      const r = document.createRange(); r.selectNodeContents($('td-num'));
+      const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      tdStatus.textContent = 'Number selected. Copy it from here.';
+    };
+    try { navigator.clipboard.writeText(CONFIG.phoneDisplay).then(done, fallback); } catch { fallback(); }
+  });
+
+  update();
+})();
+</script>
+</body>
+</html>
